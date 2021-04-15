@@ -32,7 +32,7 @@ snapshots of the universe at each moment in time. Unlike existing models of
 physics, there is no "in between". If a ball travels from x=1 to x=2, there is
 no guarantee that it will ever hit exactly x=√2.
 
-![Discrete time](./discrete-time.png)
+![Discrete time](/images/posts/wolframs-theory-of-everything/discrete-time.png)
 
 This is a very comforting concept. In the universe, big things and small things
 look mostly the same. The force of gravity pulling together two atoms in a
@@ -58,7 +58,7 @@ the adding three numbers. You can begin by adding the first two or by adding the
 second two. Ultimately, however, you will converge on the same answer no matter
 which path you choose.
 
-![Causal invariance](./causal-invariance.png)
+![Causal invariance](/images/posts/wolframs-theory-of-everything/causal-invariance.png)
 
 In Wolfram's proposed model of the universe, all possible variations take place
 simultaneously. Eventually, however, these branches (almost) always reconvene on
@@ -87,7 +87,7 @@ process n times, how many nodes are selected? If the answer is proportional to
 n<sup>2</sup>, then the network is 2D. If it's proportional to n<sup>3</sup>,
 the network is 3D. Here's the illustration provided by Wolfram himself:
 
-![Dimensionality](./dimensionality.png)
+![Dimensionality](/images/posts/wolframs-theory-of-everything/dimensionality.png)
 
 Of course, in a network like this, dimensionality is just a rough approximation,
 with two unintuitive properties:
