@@ -1,65 +1,90 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Layout from "../components/Layout";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <Layout activeTab="home">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Home | Josh Pullen</title>
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <div className="mb-4">
+        <h3 className="text-xl font-semibold text-indigo-700">
+          Hello! I'm Josh Pullen! 👋
+        </h3>
+        <h2 className="text-3xl font-bold text-gray-900">
+          I love education and technology.
+        </h2>
+      </div>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+      <div className="typography text-lg leading-7">
+        <p>
+          When I was 8 years old, I started programming with{" "}
+          <a
+            href="https://scratch.mit.edu/users/PullJosh/"
+            target="_blank"
+            rel="noopener"
+          >
+            Scratch
+          </a>
+          . Ever since that magical moment, I've been fascinated by the
+          opportunity to learn using technology.
         </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <p>After my time on Scratch, I created a few educational websites:</p>
+        <div className="px-8 w-break-free">
+          <div className="flex flex-col items-center max-w-3xl mx-auto my-8 md:flex-row">
+            <a
+              className="max-w-sm p-2 pb-0 mb-4 transition duration-200 transform bg-white rounded-lg shadow-lg select-none md:w-2/5 hover:shadow-xl hover:-translate-y-1 md:mb-0"
+              href="http://thirdgrademathgames.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/third-grade-math-games.webp"
+                alt="Third Grade Math Games"
+                className="w-full h-auto rounded-sm shadow md:rounded-r-none"
+              />
+              <div className="my-2 text-base font-semibold text-center text-gray-900">
+                Third Grade Math Games
+              </div>
+            </a>
+            <a
+              className="z-10 max-w-sm p-3 pb-0 mb-4 -mx-2 transition duration-200 transform bg-white rounded-lg shadow-lg select-none md:mb-0 md:w-3/5 hover:shadow-xl hover:-translate-y-1"
+              href="https://www.rocketspelling.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/rocket-spelling.webp"
+                alt="Rocket Spelling"
+                className="w-full h-auto rounded shadow"
+              />
+              <div className="my-3 text-xl font-semibold text-center text-gray-900">
+                Rocket Spelling
+              </div>
+            </a>
+            <a
+              className="max-w-sm p-2 pb-0 transition duration-200 transform bg-white rounded-lg shadow-lg select-none md:w-2/5 hover:shadow-xl hover:-translate-y-1"
+              href="https://onlinemathleague.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/images/online-math-league.webp"
+                alt="Online Math League"
+                className="w-full h-auto rounded-sm shadow md:rounded-l-none"
+              />
+              <div className="my-2 text-base font-semibold text-center text-gray-900">
+                Online Math League
+              </div>
+            </a>
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+        <p>
+          I also started a summer technology camp and an after school coding
+          club for local elementary students.
+        </p>
+      </div>
+    </Layout>
+  );
 }
