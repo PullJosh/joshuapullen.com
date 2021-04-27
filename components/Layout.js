@@ -62,7 +62,15 @@ export default function Layout({ children, activeTab }) {
       <footer className="py-8 mt-auto bg-gray-200 select-none">
         <div className="max-w-2xl px-8 mx-auto">
           <div className="flex">
-            <span>© {new Date().getFullYear()} Josh Pullen</span>
+            <div>
+              <a
+                className="block text-indigo-600 hover:underline"
+                href="mailto:hello@joshuapullen.com"
+              >
+                hello@joshuapullen.com
+              </a>
+              <div>© {new Date().getFullYear()} Josh Pullen</div>
+            </div>
             <div className="flex flex-col ml-auto sm:flex-row">
               <a
                 className="flex items-center ml-4 text-gray-700 hover:text-indigo-700"
