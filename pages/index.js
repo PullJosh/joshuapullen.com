@@ -84,6 +84,17 @@ export default function Home() {
           I also started a summer technology camp and an after school coding
           club for local elementary students.
         </p>
+        <p>
+          Now I'm working with{" "}
+          <a
+            href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw"
+            target="_blank"
+          >
+            3Blue1Brown
+          </a>{" "}
+          (and a slew of other awesome people) to convert his math videos into
+          written articles.
+        </p>
       </div>
     </Layout>
   );
