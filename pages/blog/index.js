@@ -34,7 +34,12 @@ export default function Blog({ posts }) {
                 {post.data.title}
               </h2>
               <div className="typography">
-                <ReactMarkdown components={{ a: ({ children }) => children }}>
+                <ReactMarkdown
+                  components={{
+                    a: ({ children }) => children,
+                    img: () => null,
+                  }}
+                >
                   {`${post.excerpt}...`}
                 </ReactMarkdown>
               </div>
