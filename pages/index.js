@@ -87,7 +87,7 @@ export default function Home() {
         <p>
           Now I'm working with{" "}
           <a
-            href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw"
+            href="https://www.3blue1brown.com/"
             target="_blank"
           >
             3Blue1Brown
