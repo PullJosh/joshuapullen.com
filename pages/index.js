@@ -1,101 +1,197 @@
 import Head from "next/head";
-import Layout from "../components/Layout";
+import Nav from "../components/Nav";
+import Wave from "../components/Wave";
+import Footer from "../components/Footer";
 
-export default function Home() {
+import headshot from "../public/images/josh-transparent-bg.png";
+import Image from "next/image";
+
+export default function Index() {
   return (
-    <Layout activeTab="home">
+    <>
       <Head>
-        <title>Home | Josh Pullen</title>
+        <title>Josh Pullen</title>
       </Head>
 
-      <div className="mb-4">
-        <h3 className="text-xl font-semibold text-indigo-700">
-          Hello! I'm Josh Pullen! 👋
-        </h3>
-        <h2 className="text-3xl font-bold text-gray-900">
-          I love education and technology.
-        </h2>
-      </div>
+      <Nav current="home" wavy={false} />
 
-      <div className="typography text-lg leading-7">
-        <p>
-          When I was 8 years old, I started programming with{" "}
-          <a
-            href="https://scratch.mit.edu/users/PullJosh/"
-            target="_blank"
-            rel="noopener"
-          >
-            Scratch
-          </a>
-          . Ever since that magical moment, I've been fascinated by the
-          opportunity to learn using technology.
-        </p>
-        <p>After my time on Scratch, I created a few educational websites:</p>
-        <div className="px-8 w-break-free">
-          <div className="flex flex-col items-center max-w-3xl mx-auto my-8 md:flex-row">
-            <a
-              className="max-w-sm p-2 pb-0 mb-4 transition duration-200 transform bg-white rounded-lg shadow-lg select-none md:w-2/5 hover:shadow-xl hover:-translate-y-1 md:mb-0"
-              href="http://thirdgrademathgames.com/"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="/images/third-grade-math-games.webp"
-                alt="Third Grade Math Games"
-                className="w-full h-auto rounded-sm shadow md:rounded-r-none"
-              />
-              <div className="my-2 text-base font-semibold text-center text-gray-900">
-                Third Grade Math Games
-              </div>
-            </a>
-            <a
-              className="z-10 max-w-sm p-3 pb-0 mb-4 -mx-2 transition duration-200 transform bg-white rounded-lg shadow-lg select-none md:mb-0 md:w-3/5 hover:shadow-xl hover:-translate-y-1"
-              href="https://www.rocketspelling.com/"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="/images/rocket-spelling.webp"
-                alt="Rocket Spelling"
-                className="w-full h-auto rounded shadow"
-              />
-              <div className="my-3 text-xl font-semibold text-center text-gray-900">
-                Rocket Spelling
-              </div>
-            </a>
-            <a
-              className="max-w-sm p-2 pb-0 transition duration-200 transform bg-white rounded-lg shadow-lg select-none md:w-2/5 hover:shadow-xl hover:-translate-y-1"
-              href="https://onlinemathleague.com/"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="/images/online-math-league.webp"
-                alt="Online Math League"
-                className="w-full h-auto rounded-sm shadow md:rounded-l-none"
-              />
-              <div className="my-2 text-base font-semibold text-center text-gray-900">
-                Online Math League
-              </div>
-            </a>
+      <div className="bg-indigo-600 relative">
+        <div className="max-w-2xl lg:max-w-4xl px-8 mx-auto pt-8 pb-16 lg:pt-24 lg:pb-32 relative">
+          <div className="text-center lg:text-left">
+            <div className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-indigo-500 mx-auto mb-8 overflow-hidden lg:bg-transparent lg:rounded-none lg:w-96 lg:h-96 lg:m-0 lg:absolute lg:bottom-0 lg:-right-8">
+              <Image src={headshot} alt="Photo of Josh Pullen" />
+            </div>
+
+            <h3 className="text-2xl sm:text-4xl text-indigo-300">
+              Hi! I'm Josh Pullen.
+            </h3>
+            <h1 className="text-4xl sm:text-7xl font-extrabold text-white whitespace-nowrap">
+              I love <span className="text-yellow-300">education</span> <br />
+              and <span className="text-green-400">technology</span>.
+            </h1>
           </div>
         </div>
-        <p>
-          I also started a summer technology camp and an after school coding
-          club for local elementary students.
-        </p>
-        <p>
-          Now I'm working with{" "}
-          <a
-            href="https://www.3blue1brown.com/"
-            target="_blank"
-          >
-            3Blue1Brown
-          </a>{" "}
-          (and a slew of other awesome people) to convert his math videos into
-          written articles.
-        </p>
+
+        <Wave />
       </div>
-    </Layout>
+
+      <div className="py-16 bg-white">
+        <div className="max-w-2xl px-8 mx-auto prose sm:prose-lg md:prose-xl">
+          <h2>Things I've Made</h2>
+          <ul>
+            <li>
+              <strong>
+                <a
+                  href="https://www.rocketspelling.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Rocket Spelling
+                </a>
+              </strong>
+              <div>Online spelling practice for elementary students.</div>
+            </li>
+            <li>
+              <strong>
+                Lessons on{" "}
+                <a
+                  href="https://www.3blue1brown.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  3Blue1Brown.com
+                </a>
+              </strong>
+              <div>
+                I was hired as an intern to create online math lessons. Working
+                with the team was a ton of fun, and I'm really proud of what we
+                made.
+              </div>
+            </li>
+            <li>
+              <strong>
+                <a
+                  href="https://leopardjs.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Leopard
+                </a>
+              </strong>
+              <div>
+                Leopard is a tool that converts{" "}
+                <a
+                  href="https://scratch.mit.edu/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Scratch
+                </a>{" "}
+                projects into JavaScript code. If you're looking to learn
+                JavaScript, this could be the tool for you.
+              </div>
+            </li>
+            <li>
+              <strong>
+                <a
+                  href="https://teacher-tools.joshuapullen.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Teaching Tools
+                </a>
+              </strong>
+              <div>
+                This one is still a work in progress. It's a random collection
+                of utilities that teachers may find useful.
+              </div>
+            </li>
+            <li>
+              <strong>
+                <a
+                  href="https://onlinemathleague.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Online Math League
+                </a>{" "}
+                Website
+              </strong>
+              <div>
+                I was hired to create the new Online Math League website.
+              </div>
+            </li>
+            <li>
+              <strong>
+                <a
+                  href="https://pulljosh.github.io/thirdgrademathgames/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Third Grade Math Games
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://pulljosh.github.io/fourthgrademathgames/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Fourth Grade Math Games
+                </a>
+              </strong>
+              <div>
+                A pair of websites with a collection of math games made for 3rd
+                and 4th grade students.
+              </div>
+            </li>
+            <li>
+              <strong>A summer coding camp and after-school coding club</strong>
+              <div>
+                Nothing beats teaching people face-to-face. It's so fun to watch
+                kids' faces light up when they get something to work.
+              </div>
+            </li>
+          </ul>
+
+          <h2>Math and Code</h2>
+          <p>
+            Math and code are two of the most powerful tools in human history.
+            Used effectively, they are virtually indistinguishable from magic.
+            But, powerful as they are, they can be difficult to put to good use.
+            I see two ways to solve this:{" "}
+            <strong>better tools and better education.</strong>
+          </p>
+          <p>
+            I would <em>love</em> to build better, more accessible math and
+            programming tools.{" "}
+            <a
+              href="https://leopardjs.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Leopard
+            </a>{" "}
+            is one such attempt.
+          </p>
+          <p>
+            But, although tool-building is lots of fun, I am not 100% sure that
+            my time is best spent there. It might be the case that teaching is
+            where I am most useful. There are lots of useful math and
+            programming tools already available that just need a champion to
+            spread the word.
+          </p>
+          <p>
+            Perhaps my most useful role is sharing the good news about what's
+            possible in this world, and helping people level up their skills.
+          </p>
+          <p>
+            For now, I'm just trying to find my place. As we all are, I
+            suppose...
+          </p>
+        </div>
+      </div>
+
+      <Footer />
+    </>
   );
 }
