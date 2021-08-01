@@ -19,7 +19,11 @@ export default function Index() {
         <div className="max-w-2xl lg:max-w-4xl px-8 mx-auto pt-8 pb-16 lg:pt-24 lg:pb-32 relative">
           <div className="text-center lg:text-left">
             <div className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-indigo-500 mx-auto mb-8 overflow-hidden lg:bg-transparent lg:rounded-none lg:w-96 lg:h-96 lg:m-0 lg:absolute lg:bottom-0 lg:-right-8">
-              <Image src={headshot} alt="Photo of Josh Pullen" />
+              <Image
+                src={headshot}
+                alt="Photo of Josh Pullen"
+                priority={true}
+              />
             </div>
 
             <h3 className="text-2xl sm:text-4xl text-indigo-300">
