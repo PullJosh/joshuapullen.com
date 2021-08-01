@@ -4,14 +4,12 @@ import rehypeRaw from "rehype-raw";
 import Layout from "../../components/Layout";
 import { getPostSlugs, getPostBySlug } from "../../lib/getPosts";
 
-const components = {
-  h1: ({ children }) => <h2>{children}</h2>,
-  h2: ({ children }) => <h3>{children}</h3>,
-  h3: ({ children }) => <h4>{children}</h4>,
-  h4: ({ children }) => <h5>{children}</h5>,
-  h5: ({ children }) => <h6>{children}</h6>,
-  h6: ({ children }) => <h6>{children}</h6>,
-};
+const h2 = ({ children }) => <h2>{children}</h2>;
+const h3 = ({ children }) => <h3>{children}</h3>;
+const h4 = ({ children }) => <h4>{children}</h4>;
+const h5 = ({ children }) => <h5>{children}</h5>;
+const h6 = ({ children }) => <h6>{children}</h6>;
+const components = { h1: h2, h2: h3, h3: h4, h4: h5, h5: h6, h6: h6 };
 
 export default function BlogPost({ post }) {
   return (
