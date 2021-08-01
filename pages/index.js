@@ -23,6 +23,8 @@ export default function Index() {
                 src={headshot}
                 alt="Photo of Josh Pullen"
                 priority={true}
+                sizes="(max-width: 640px) 128px, (max-width: 1024px) 192px, 384px"
+                quality={50}
               />
             </div>
 
