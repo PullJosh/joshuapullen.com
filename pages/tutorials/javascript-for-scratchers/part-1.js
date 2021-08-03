@@ -108,8 +108,8 @@ export default function Part1() {
         </p>
         <p>Fear not.</p>
         <p>
-          No matter what you want to make will JavaScript, you'll need to learn
-          the ropes of very basic website building.
+          No matter what you want to make with JavaScript, you'll need to learn
+          the ropes of very basic website building first.
         </p>
         <p>
           But there is a special element you can put on a web page called a
@@ -118,8 +118,8 @@ export default function Part1() {
         </p>
         <p>
           So if you want to, you can start with just the very basics of the web
-          and then quickly switch to a focus on games. But if building websites
-          appeals to you, you can stick with doing that. (Or try both!)
+          and then quickly switch to a focus on games. Or, if building websites
+          appeals to you, you also have that option. (Or you can try both!)
         </p>
       </article>
     </Layout>

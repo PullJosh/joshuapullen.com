@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "../../../components/Layout";
-import WebpageEditor from "../../../components/WebpageEditor";
+import Layout from "../../../../components/Layout";
+import WebpageEditor from "../../../../components/WebpageEditor";
 
 export default function Part1() {
   return (
@@ -38,23 +38,20 @@ export default function Part1() {
             all work together just to make a simple website.
           </p>
           <p>It might feel a bit overwhelming at first, but don't fret.</p>
-          <div className="bg-gray-200 rounded px-5 py-4 text-base">
-            <div className="space-y-2">
-              <div className="font-bold text-gray-600 uppercase">Side note</div>
-              <div>
-                There are plenty of services online, like{" "}
-                <a href="https://wordpress.com/">Wordpress</a> and{" "}
-                <a href="https://www.wix.com/">Wix</a>, that let you build your
-                own website without writing any code at all. If your goal is
-                just to make a simple website, you can use one of those tools
-                without learning anything else.
-              </div>
-              <div>
-                But if you want to build a site from... ahem... <em>scratch</em>
-                , then HTML, CSS, and JavaScript are going to be essential.
-              </div>
+          <AsideBox>
+            <div>
+              There are plenty of services online, like{" "}
+              <a href="https://wordpress.com/">Wordpress</a> and{" "}
+              <a href="https://www.wix.com/">Wix</a>, that let you build your
+              own website without writing any code at all. If your goal is just
+              to make a simple website, you can use one of those tools without
+              learning anything else.
             </div>
-          </div>
+            <div>
+              But if you want to build a site from... ahem... <em>scratch</em>,
+              then HTML, CSS, and JavaScript are going to be essential.
+            </div>
+          </AsideBox>
 
           <h3>What do they all do?</h3>
           <p>All three languages work together to form one website:</p>
@@ -91,50 +88,43 @@ export default function Part1() {
             that's where JavaScript gets involved.
           </p>
 
-          <h2>HTML in 5 minutes</h2>
-          <p>Let's do the fastest introduction to HTML of all time.</p>
-          <p>Here's some HTML code, and a preview of its output:</p>
-        </div>
-        <div className="my-4 w-break-out">
-          <div className="w-full max-w-5xl px-8 mx-auto">
-            <WebpageEditor
-              html={`<h1>Hello, world!</h1>
-<p>This is my first HTML page.</p>
-<p>It has...</p>
-<ul>
-  <li>A header</li>
-  <li>Two paragraphs</li>
-  <li>A list of three things</li>
-</ul>`}
-            />
-          </div>
-        </div>
-        <div className="prose sm:prose-lg prose-indigo">
-          <p>
-            Try editing the HTML and watch how the output changes. You should
-            notice a few things:
-          </p>
+          <h2>HTML and CSS, as briefly as possible.</h2>
+          <p>I have two different mini tutorials for you:</p>
           <ul>
             <li>
-              Changing the text in the HTML changes the text on the page, just
-              as you might expect.
+              <Link href="/tutorials/javascript-for-scratchers/part-2/html-in-10-minutes">
+                <a>HTML in 10 minutes</a>
+              </Link>
             </li>
             <li>
-              The HTML is split up into <em>elements</em>. Each element starts
-              with something like <code>&lt;h1&gt;</code> or{" "}
-              <code>&lt;p&gt;</code> and ends with a corresponding tag like{" "}
-              <code>&lt;/h1&gt;</code> or <code>&lt;/p&gt;</code>. These opening
-              an closing tags almost always come in matching pairs.
-            </li>
-            <li>
-              Each element does something different. <code>h1</code> stands for
-              header 1, and it makes a big header on the page. <code>p</code>{" "}
-              stands for paragraph, <code>ul</code> stands for unordered list,
-              and <code>li</code> stands for list item.
+              <Link href="/tutorials/javascript-for-scratchers/part-2/css-in-10-minutes">
+                <a>CSS in 10 minutes</a>
+              </Link>
             </li>
           </ul>
+          <p>
+            Start with HTML, then do CSS. Feel free to skip anything you already
+            know.
+          </p>
+          <p>
+            The goal of these lessons is not to teach you everything. They are
+            just a quick overview so you can get comfortable with the big ideas.
+            After that, you should be able to search for anything else you want
+            to know.
+          </p>
         </div>
       </article>
     </Layout>
+  );
+}
+
+function AsideBox({ title = "Side note", children }) {
+  return (
+    <div className="bg-gray-200 rounded px-5 py-4 my-4 text-base">
+      <div className="space-y-2">
+        <div className="font-bold text-gray-600 uppercase">{title}</div>
+        {children}
+      </div>
+    </div>
   );
 }

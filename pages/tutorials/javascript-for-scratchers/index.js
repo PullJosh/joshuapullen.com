@@ -46,6 +46,18 @@ export default function JavascriptForScatchers() {
             <Link href="/tutorials/javascript-for-scratchers/part-2">
               <a>Start with HTML and CSS</a>
             </Link>
+            <ul>
+              <li>
+                <Link href="/tutorials/javascript-for-scratchers/part-2/html-in-10-minutes">
+                  <a>HTML in 10 minutes</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/tutorials/javascript-for-scratchers/part-2/css-in-10-minutes">
+                  <a>CSS in 10 minutes</a>
+                </Link>
+              </li>
+            </ul>
           </li>
         </ul>
       </article>
