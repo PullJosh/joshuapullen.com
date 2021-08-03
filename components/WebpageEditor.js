@@ -9,7 +9,7 @@ export default function WebpageEditor({
   const [css, setCSS] = useState(defaultCSS);
   const [js, setJS] = useState(defaultJS);
 
-  const debounceHTML = useDebounce(html, 1000);
+  const debounceHTML = useDebounce(html, 500);
   const debounceCSS = useDebounce(css, 500);
   const debounceJS = useDebounce(js, 2000);
 
@@ -26,15 +26,21 @@ export default function WebpageEditor({
   }, [debounceHTML, debounceCSS, debounceJS]);
 
   return (
-    <div className="flex flex-col sm:flex-row items-stretch h-96 sm:h-80 max-h-screen border rounded overflow-hidden divide-y sm:divide-y-0 sm:divide-x">
-      <div className="flex-1 flex flex-col">
+    <div className="flex flex-col sm:flex-row items-stretch h-96 sm:h-80 max-h-screen">
+      <div className="flex-1 flex flex-col border border-gray-900 rounded-l overflow-hidden">
         {defaultHTML && (
           <div className="flex flex-col flex-grow">
-            <div className="bg-gray-100 px-2 py-1 font-semibold border-b">
-              HTML
+            <div className="flex justify-between items-center bg-gray-900 p-1 border-b border-gray-700">
+              <span className="font-semibold px-1 text-white">HTML</span>
+              <button
+                className="bg-gray-600 text-white px-2 rounded"
+                onClick={() => setHTML(defaultHTML)}
+              >
+                Reset
+              </button>
             </div>
             <textarea
-              className="flex-grow px-2 py-1 font-mono resize-none whitespace-pre"
+              className="flex-grow px-2 py-1 font-mono resize-none whitespace-pre bg-gray-800 text-white"
               value={html}
               onChange={(event) => {
                 setHTML(event.target.value);
@@ -61,9 +67,15 @@ export default function WebpageEditor({
           />
         )}
       </div>
-      <div className="flex-1 flex flex-col">
-        <div className="bg-gray-100 px-2 py-1 font-semibold border-b">
-          Preview
+      <div className="flex-1 flex flex-col border border-l-0 rounded-r overflow-hidden">
+        <div className="flex justify-between items-center bg-gray-100 p-1 border-b">
+          <span className="font-semibold px-1 text-gray-900">Preview</span>
+          <button
+            className="bg-indigo-600 text-white px-2 rounded"
+            onClick={() => openInCodepen({ html, css, js })}
+          >
+            Open in Codepen
+          </button>
         </div>
         <iframe src={pageURL} className="flex-grow" />
       </div>
@@ -107,4 +119,23 @@ function useDebounce(value, delay) {
   }, [value, delay]);
 
   return debouncedValue;
+}
+
+function openInCodepen(data) {
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "https://codepen.io/pen/define";
+  form.target = "_blank";
+
+  const hiddenField = document.createElement("input");
+  hiddenField.type = "hidden";
+  hiddenField.name = "data";
+  hiddenField.value = JSON.stringify(data)
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+
+  form.appendChild(hiddenField);
+
+  document.body.appendChild(form);
+  form.submit();
 }

@@ -103,14 +103,36 @@ export default function Part1() {
 <p>It has...</p>
 <ul>
   <li>A header</li>
-  <li>A paragraph</li>
+  <li>Two paragraphs</li>
   <li>A list of three things</li>
 </ul>`}
             />
           </div>
         </div>
         <div className="prose sm:prose-lg prose-indigo">
-          <p>Try editing the HTML and watch how the output changes.</p>
+          <p>
+            Try editing the HTML and watch how the output changes. You should
+            notice a few things:
+          </p>
+          <ul>
+            <li>
+              Changing the text in the HTML changes the text on the page, just
+              as you might expect.
+            </li>
+            <li>
+              The HTML is split up into <em>elements</em>. Each element starts
+              with something like <code>&lt;h1&gt;</code> or{" "}
+              <code>&lt;p&gt;</code> and ends with a corresponding tag like{" "}
+              <code>&lt;/h1&gt;</code> or <code>&lt;/p&gt;</code>. These opening
+              an closing tags almost always come in matching pairs.
+            </li>
+            <li>
+              Each element does something different. <code>h1</code> stands for
+              header 1, and it makes a big header on the page. <code>p</code>{" "}
+              stands for paragraph, <code>ul</code> stands for unordered list,
+              and <code>li</code> stands for list item.
+            </li>
+          </ul>
         </div>
       </article>
     </Layout>
