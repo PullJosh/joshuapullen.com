@@ -5,7 +5,7 @@ import Wave from "./Wave";
 export default function Nav({ current, wavy = true }) {
   return (
     <header className={classNames("bg-indigo-600 relative", { "pb-3": wavy })}>
-      <div className="max-w-2xl px-8 py-6 mx-auto flex flex-col space-y-4 xxs:flex-row xxs:space-y-0 items-center justify-between">
+      <div className="max-w-2xl px-8 py-6 mx-auto flex flex-col space-y-4 xs:flex-row xs:space-y-0 items-center justify-between">
         <Link href="/">
           <a className="text-white text-xl font-medium">Josh Pullen</a>
         </Link>
@@ -16,6 +16,9 @@ export default function Nav({ current, wavy = true }) {
           </NavLink>
           <NavLink href="/blog" selected={current === "blog"}>
             Blog
+          </NavLink>
+          <NavLink href="/tutorials" selected={current === "tutorials"}>
+            Tutorials
           </NavLink>
         </nav>
       </div>

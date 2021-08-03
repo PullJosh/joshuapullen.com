@@ -41,7 +41,6 @@ module.exports = {
       }),
     },
     screens: {
-      xxs: "350px",
       xs: "475px",
       ...defaultTheme.screens,
     },

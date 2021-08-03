@@ -16,6 +16,10 @@ export default function Blog({ posts }) {
           content="Thoughts on education and technology."
         />
       </Head>
+      <div className="prose sm:prose-lg prose-indigo">
+        <h1>Blog</h1>
+        <div />
+      </div>
       <div className="-my-4">
         {posts.map((post) => {
           return (
