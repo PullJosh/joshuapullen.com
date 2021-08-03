@@ -93,6 +93,34 @@ export default function Part1() {
           everything interactive that you see on websites. And it's all
           JavaScript.
         </p>
+        <h2>What you can do with JavaScript</h2>
+        <p>
+          Since JavaScript is generally used in the context of websites, the{" "}
+          <Link href="/tutorials/javascript-for-scratchers/part-2">
+            <a>next part</a>
+          </Link>{" "}
+          is all about getting started with website-building.
+        </p>
+        <p>
+          If you are interesting in building and publishing your own websites,
+          then that is great news! But if you're interested in making games, it
+          might come as a dissapointment.
+        </p>
+        <p>Fear not.</p>
+        <p>
+          No matter what you want to make will JavaScript, you'll need to learn
+          the ropes of very basic website building.
+        </p>
+        <p>
+          But there is a special element you can put on a web page called a
+          "canvas", and it is a lot like the Scratch stage. It's a place to draw
+          and play and it's excellent for making games.
+        </p>
+        <p>
+          So if you want to, you can start with just the very basics of the web
+          and then quickly switch to a focus on games. But if building websites
+          appeals to you, you can stick with doing that. (Or try both!)
+        </p>
       </article>
     </Layout>
   );
