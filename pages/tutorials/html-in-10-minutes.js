@@ -1,31 +1,30 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "../../../../components/Layout";
-import WebpageEditor from "../../../../components/WebpageEditor";
+import Layout from "../../components/Layout";
+import WebpageEditor from "../../components/WebpageEditor";
+import AsideBox from "../../components/AsideBox";
 
 export default function Part1() {
   return (
     <Layout>
       <Head>
-        <title>
-          HTML in 10 minutes | Start with HTML and CSS | JavaScript for
-          Scratchers | Josh Pullen
-        </title>
+        <title>HTML in 10 minutes | Josh Pullen</title>
       </Head>
 
       <article>
         <div className="prose sm:prose-lg prose-indigo">
-          <div>
-            <Link href="/tutorials/javascript-for-scratchers">
-              <a>JavaScript for Scratchers</a>
-            </Link>{" "}
-            &bull;{" "}
-            <Link href="/tutorials/javascript-for-scratchers/part-2">
-              <a>Part 2: Start with HTML and CSS</a>
-            </Link>
-          </div>
           <h1>HTML in 10 minutes</h1>
           <p>Let's do the fastest introduction to HTML of all time.</p>
+          <AsideBox>
+            <div>
+              If your goal is to make websites, then really understanding HTML
+              is crucial. But if you're just trying to make games, don't sweat
+              it too much. Just a tiny bit of HTML is all you'll need. (Most of
+              the hard work there happens in JavaScript.)
+            </div>
+          </AsideBox>
+
+          <h2>Example of HTML</h2>
           <p>Here's some HTML code, and a preview of its output:</p>
         </div>
         <div className="my-4 w-break-out">
@@ -71,6 +70,8 @@ export default function Part1() {
             save yourself the pain and make it a priority to pair them up
             properly.
           </p>
+
+          <h2>Nested HTML Elements</h2>
           <p>
             Alright... Let me show you another HTML example. This is mostly just
             more of the same, but here I'm also showing off how you can have
@@ -107,14 +108,8 @@ export default function Part1() {
               learning here, so do what feels best for you.
             </div>
           </AsideBox>
-          <AsideBox>
-            <div>
-              If your goal is to make websites, then really understanding HTML
-              is crucial. But if you're just trying to make games, don't sweat
-              it. Just a tiny bit of HTML is all you need. (Most of the hard
-              work there happens in JavaScript.)
-            </div>
-          </AsideBox>
+
+          <h2>Elements with Attributes</h2>
           <p>
             Okay, one more big idea and then that's enough for now. Some
             elements require extra information. For example, if you want to
@@ -124,16 +119,5 @@ export default function Part1() {
         </div>
       </article>
     </Layout>
-  );
-}
-
-function AsideBox({ title = "Side note", children }) {
-  return (
-    <div className="bg-gray-200 rounded px-5 py-4 my-4 text-base">
-      <div className="space-y-2">
-        <div className="font-bold text-gray-600 uppercase">{title}</div>
-        {children}
-      </div>
-    </div>
   );
 }

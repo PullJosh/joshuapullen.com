@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "../../../../components/Layout";
-import WebpageEditor from "../../../../components/WebpageEditor";
+import Layout from "../../../components/Layout";
+import AsideBox from "../../../components/AsideBox";
 
 export default function Part1() {
   return (
@@ -92,12 +92,12 @@ export default function Part1() {
           <p>I have two different mini tutorials for you:</p>
           <ul>
             <li>
-              <Link href="/tutorials/javascript-for-scratchers/part-2/html-in-10-minutes">
+              <Link href="/tutorials/html-in-10-minutes">
                 <a>HTML in 10 minutes</a>
               </Link>
             </li>
             <li>
-              <Link href="/tutorials/javascript-for-scratchers/part-2/css-in-10-minutes">
+              <Link href="/tutorials/css-in-10-minutes">
                 <a>CSS in 10 minutes</a>
               </Link>
             </li>
@@ -115,16 +115,5 @@ export default function Part1() {
         </div>
       </article>
     </Layout>
-  );
-}
-
-function AsideBox({ title = "Side note", children }) {
-  return (
-    <div className="bg-gray-200 rounded px-5 py-4 my-4 text-base">
-      <div className="space-y-2">
-        <div className="font-bold text-gray-600 uppercase">{title}</div>
-        {children}
-      </div>
-    </div>
   );
 }

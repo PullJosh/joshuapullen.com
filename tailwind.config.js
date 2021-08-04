@@ -17,11 +17,18 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            code: {
-              color: theme("colors.gray.200", defaultTheme.colors.gray[200]),
+            pre: {
+              color: theme("colors.gray.800", defaultTheme.colors.gray[800]),
               backgroundColor: theme(
-                "colors.gray.800",
-                defaultTheme.colors.gray[800]
+                "colors.gray.200",
+                defaultTheme.colors.gray[200]
+              ),
+            },
+            code: {
+              color: theme("colors.gray.800", defaultTheme.colors.gray[800]),
+              backgroundColor: theme(
+                "colors.gray.200",
+                defaultTheme.colors.gray[200]
               ),
               fontWeight: "400",
               borderRadius: rem(3),

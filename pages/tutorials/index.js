@@ -14,6 +14,22 @@ export default function Tutorials() {
             : An introduction to JavaScript for people who already know Scratch.
           </li>
         </ul>
+        <ul>
+          <li>
+            <Link href="/tutorials/html-in-10-minutes">
+              <a>HTML in 10 minutes</a>
+            </Link>
+            : The fastest possible introduction to HTML
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <Link href="/tutorials/css-in-10-minutes">
+              <a>CSS in 10 minutes</a>
+            </Link>
+            : The fastest possible introduction to CSS
+          </li>
+        </ul>
       </div>
     </Layout>
   );
