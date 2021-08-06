@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import AsideBox from "../../../components/AsideBox";
 import Layout from "../../../components/Layout";
 
-const ScratchBlocks = dynamic(() =>
-  import("../../../components/ScratchBlocks")
+const ScratchBlocks = dynamic(
+  () => import("../../../components/ScratchBlocks"),
+  { ssr: false }
 );
 
 export default function Part4() {
