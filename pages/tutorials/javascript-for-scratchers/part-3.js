@@ -1,14 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
-import AsideBox from "../../../components/AsideBox";
 import Layout from "../../../components/Layout";
 
-export default function PartWhere() {
+export default function Part3() {
   return (
     <Layout>
       <Head>
         <title>
-          Part ?: Where to write JavaScript code | JavaScript for Scratchers |
+          Part 3: Where to write JavaScript code | JavaScript for Scratchers |
           Josh Pullen
         </title>
       </Head>

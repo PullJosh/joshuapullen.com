@@ -3,7 +3,7 @@ import Link from "next/link";
 import Layout from "../../../components/Layout";
 import AsideBox from "../../../components/AsideBox";
 
-export default function Part1() {
+export default function Part2() {
   return (
     <Layout>
       <Head>

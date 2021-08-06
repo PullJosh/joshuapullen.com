@@ -2,12 +2,12 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../../components/Layout";
 
-export default function PartCanvas() {
+export default function Part8() {
   return (
     <Layout>
       <Head>
         <title>
-          Part ?: Making games with &lt;canvas&gt; | JavaScript for Scratchers |
+          Part 8: Making games with &lt;canvas&gt; | JavaScript for Scratchers |
           Josh Pullen
         </title>
       </Head>

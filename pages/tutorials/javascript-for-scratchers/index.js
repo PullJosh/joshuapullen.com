@@ -46,49 +46,33 @@ export default function JavascriptForScatchers() {
 
         <h2>Contents</h2>
         <ul>
-          <li>
-            <strong>Part 1:</strong>{" "}
-            <Link href="/tutorials/javascript-for-scratchers/part-1">
-              <a>What is JavaScript, and what can it do?</a>
-            </Link>
-          </li>
-          <li>
-            <strong>Part 2:</strong>{" "}
-            <Link href="/tutorials/javascript-for-scratchers/part-2">
-              <a>Start with HTML and CSS</a>
-            </Link>
-          </li>
-          <li>
-            <strong>Part 3:</strong>{" "}
-            <Link href="/tutorials/javascript-for-scratchers/part-3">
-              <a>Where to write JavaScript code</a>
-            </Link>
-          </li>
-          <li>
-            <strong>Part 4:</strong> Translating Scratch blocks to JavaScript
-          </li>
-          <li>
-            <strong>Part 5:</strong> One script that does everything
-          </li>
-          <li>
-            <strong>Part 6:</strong> Variables are created on the fly
-          </li>
-          <li>
-            <strong>Part 7:</strong> Beyond lists: Arrays, objects, and more
-          </li>
-          <li>
-            <strong>Part 8:</strong>{" "}
-            <Link href="/tutorials/javascript-for-scratchers/part-7">
-              <a>Making games with &lt;canvas&gt;</a>
-            </Link>
-          </li>
-          <li>
-            <strong>Part 9:</strong> How to publish your websites and games
-          </li>
-          <li>
-            <strong>Part 10:</strong> Topics beyond this tutorial (build steps,
-            react/vue/svelte, node/deno, git, etc.)
-          </li>
+          <ContentsItem num={1} id="part-1">
+            What is JavaScript, and what can it do?
+          </ContentsItem>
+          <ContentsItem num={2} id="part-2">
+            Start with HTML and CSS
+          </ContentsItem>
+          <ContentsItem num={3} id="part-3">
+            Where to write JavaScript code
+          </ContentsItem>
+          <ContentsItem num={4} id="part-4">
+            Translating Scratch blocks to JavaScript
+          </ContentsItem>
+          <ContentsItem num={5}>One script that does everything</ContentsItem>
+          <ContentsItem num={6}>Variables are created on the fly</ContentsItem>
+          <ContentsItem num={7}>
+            Numbers, strings, arrays, objects, functions, and more
+          </ContentsItem>
+          <ContentsItem num={8} id="part-8">
+            Making games with &lt;canvas&gt;
+          </ContentsItem>
+          <ContentsItem num={9}>
+            How to publish your websites and games
+          </ContentsItem>
+          <ContentsItem num={10}>
+            Topics beyond this tutorial (build steps, react/vue/svelte,
+            node/deno, git, etc.)
+          </ContentsItem>
         </ul>
 
         <h2>Too much to think about?</h2>
@@ -116,5 +100,19 @@ export default function JavascriptForScatchers() {
         </p>
       </article>
     </Layout>
+  );
+}
+
+function ContentsItem({ num, id, children }) {
+  return (
+    <li>
+      <strong>Part {num}:</strong>{" "}
+      {id && (
+        <Link href={`/tutorials/javascript-for-scratchers/${id}`}>
+          <a>{children}</a>
+        </Link>
+      )}
+      {!id && children}
+    </li>
   );
 }
