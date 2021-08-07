@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Layout from "../../../components/Layout";
+import { useState } from "react";
 
 const ScratchBlocks = dynamic(
   () => import("../../../components/ScratchBlocks"),
@@ -39,49 +40,215 @@ export default function Part4() {
           </p>
           <h2>Blocks that are simple to translate</h2>
         </div>
-        <TranslationGrid>
-          <Translation scratch="((6) + (2))" js="6 + 2" />
-          <Translation scratch="((6) - (2))" js="6 - 2" />
-          <Translation scratch="((6) * (2))" js="6 * 2" />
-          <Translation scratch="((6) / (2))" js="6 / 2" />
-          <Translation scratch="<(20) > (15)>" js="20 > 15" />
-          <Translation scratch="<(20) < (15)>" js="20 < 15" />
-          <Translation scratch="<(20) = (15)>" js="20 == 15" />
-          <Translation
-            scratch="<<first :: custom> and <second :: custom>>"
-            js="first && second"
-          />
-          <Translation
-            scratch="<<first :: custom> or <second :: custom>>"
-            js="first || second"
-          />
-          <Translation scratch="<not <thing :: custom>>" js="!thing" />
-          <Translation scratch="(length of [apple])" js='"apple".length' />
-          <Translation
-            scratch="<[apple] contains [a]>"
-            js='"apple".includes("a")'
-          />
-          <Translation scratch="((7) mod (3))" js="7 % 3" />
-          <Translation scratch="(round (3.5))" js="Math.round(3.5)" />
-        </TranslationGrid>
+        <Accordion
+          title={
+            <div className="prose sm:prose-lg">
+              <h3>Operators</h3>
+            </div>
+          }
+        >
+          <TranslationGrid>
+            <Translation scratch="((6) + (2))" js="6 + 2" />
+            <Translation scratch="((6) - (2))" js="6 - 2" />
+            <Translation scratch="((6) * (2))" js="6 * 2" />
+            <Translation scratch="((6) / (2))" js="6 / 2" />
+            <Translation scratch="<(20) > (15)>" js="20 > 15" />
+            <Translation scratch="<(20) < (15)>" js="20 < 15" />
+            <Translation scratch="<(20) = (15)>" js="20 == 15" />
+            <Translation
+              scratch="<<first :: custom> and <second :: custom>>"
+              js="first && second"
+            />
+            <Translation
+              scratch="<<first :: custom> or <second :: custom>>"
+              js="first || second"
+            />
+            <Translation scratch="<not <thing :: custom>>" js="!thing" />
+            <Translation scratch="(length of [apple])" js='"apple".length' />
+            <Translation
+              scratch="<[apple] contains [a]>"
+              js='"apple".includes("a")'
+            />
+            <Translation scratch="((7) mod (3))" js="7 % 3" />
+            <Translation scratch="(round (3.5))" js="Math.round(3.5)" />
+          </TranslationGrid>
+        </Accordion>
+
         <div className="prose sm:prose-lg prose-indigo">
-          <h2>Blocks that can sort of be translated</h2>
+          <div />
+          <h2>Blocks that are tricky to translate</h2>
         </div>
-        <TranslationGrid>
-          <Translation scratch="(pick random (1) to (10))" />
-          <Translation scratch="(join [scratch] [js])" />
-          <Translation scratch="(join [1] [2])" />
-          <Translation
-            scratch="(letter (1) of [abcd])"
-            js='"abcd"[0]'
-            comment="Start counting from 0 (rather than 1)."
-          />
-          <Translation
-            scratch="(letter (4) of [abcd])"
-            js='"abcd"[3]'
-            comment="Number must always be one less than in Scratch."
-          />
-        </TranslationGrid>
+        <Accordion
+          title={
+            <>
+              <ScratchBlocks>(pick random (1) to (10))</ScratchBlocks>
+            </>
+          }
+        >
+          <div className="space-y-4">
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                JavaScript has a function, <code>Math.random()</code>, that
+                picks random numbers, but it works differently than Scratch's
+                pick random block.
+              </p>
+              <p>
+                <code>Math.random()</code> always returns a number between 0 and
+                1 (you don't get to choose the range yourself), and it is a big
+                long decimal with lots of precision:
+              </p>
+            </div>
+            <RandomNumberDemo
+              func={() => Math.random()}
+              funcString="Math.random()"
+            />
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                If you want anything other than that, you'll have to do some
+                math yourself.
+              </p>
+              <p>
+                To make the range bigger than just 0 to 1, you can multiply the
+                result. For example, to pick a number between 0 and 100, do{" "}
+                <code>Math.random() * 100</code>. That way, you'll pick a number
+                between 0 and 1, but then scale it up to be bigger.
+              </p>
+            </div>
+            <RandomNumberDemo
+              func={() => Math.random() * 100}
+              funcString="Math.random() * 100"
+            />
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                And if you want the range to start with something other than 0,
+                you can add to your result.
+              </p>
+              <p>
+                For example, to pick a number between 50 and 150, multiply by
+                100 to get 0-100 and then add 50 to get 50-150.
+              </p>
+            </div>
+            <RandomNumberDemo
+              func={() => Math.random() * 100 + 50}
+              funcString="Math.random() * 100 + 50"
+            />
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                And if you want a nice round number, you can use the{" "}
+                <code>Math.floor()</code> function to round the result down to
+                an integer.
+              </p>
+            </div>
+            <RandomNumberDemo
+              func={() => Math.floor(Math.random() * 10 + 1)}
+              funcString="Math.floor(Math.random() * 10 + 1)"
+            />
+          </div>
+        </Accordion>
+        <Accordion
+          title={
+            <ScratchBlocks className="inline-block align-middle">
+              (join [scratch] [js])
+            </ScratchBlocks>
+          }
+        >
+          <div className="space-y-4">
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                In JavaScript, you can join text together using the{" "}
+                <code>+</code> sign. It's almost like you're <em>adding</em> the
+                two pieces of text together.
+              </p>
+              <pre>
+                <code>"scratch" + "js"</code>
+              </pre>
+              <p>You can even add a bunch of pieces together all at once:</p>
+              <ScratchBlocks>
+                (join [first] (join [second] (join [third] [fourth])))
+              </ScratchBlocks>
+              <pre>
+                <code>"first" + "second" + "third" + "fourth"</code>
+              </pre>
+              <p>Makes sense, right?</p>
+              <p>
+                One problem with this method is that <code>+</code> is also used
+                for adding numbers together. So what if you want to join some
+                numbers?
+              </p>
+            </div>
+            <TranslationGrid>
+              <Translation
+                scratch="(join [1] [2])"
+                js="1 + 2"
+                comment="This won't work! It will give you 3."
+              />
+            </TranslationGrid>
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                The trick here is that in JavaScript, <code>3</code> and{" "}
+                <code>"3"</code> are different. The first is the number 3, but
+                the second is the <em>string</em> "3". "String" is basically a
+                fancy word for "text".
+              </p>
+              <p>
+                Scratch doesn't really make this distinction between numbers and
+                strings, but{" "}
+                <Link href="/tutorials/javascript-for-scratchers/part-7">
+                  <a>JavaScript does</a>
+                </Link>
+                . So you need to be careful when using the <code>+</code>{" "}
+                operator to make sure you're plugging in the right kind of data.
+              </p>
+              <p>
+                If you wanted to join two numbers, you would have to join the
+                strings containing those numbers as text:
+              </p>
+              <pre>
+                <code>"1" + "2"</code>
+              </pre>
+              <p>
+                The code above would give <code>"12"</code> as a result, just
+                like we would expect with the join block.
+              </p>
+              <p>But there's a better way.</p>
+              <p>
+                If you have some text, and you just want to insert a value
+                somewhere within it, there's a different method called{" "}
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">
+                  template literals
+                </a>{" "}
+                that is easier to use and doesn't have this problem.
+              </p>
+              <p>Here's how it works:</p>
+            </div>
+            <TranslationGrid>
+              <Translation
+                scratch="(join [Hello, ] (join (name) [!]))"
+                js="`Hello, ${name}!`"
+              />
+            </TranslationGrid>
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                Here, we start and end the string with <code>`</code>, and
+                anywhere inside we can write <code>$&#123;something&#125;</code>{" "}
+                to insert the value of the variable `something` into the string.
+              </p>
+              <p>
+                With this method, even if the value inside is a number, it will
+                always "join" as expected (rather than adding).
+              </p>
+            </div>
+          </div>
+        </Accordion>
+        <Accordion
+          title={
+            <>
+              <ScratchBlocks>(letter (1) of [abcd])</ScratchBlocks>
+            </>
+          }
+        >
+          asdf
+        </Accordion>
       </article>
     </Layout>
   );
@@ -95,7 +262,7 @@ function Translation({ scratch, js, comment }) {
   return (
     <>
       <div>
-        <ScratchBlocks blockStyle="scratch3">{scratch}</ScratchBlocks>
+        <ScratchBlocks>{scratch}</ScratchBlocks>
       </div>
       <div>
         <pre className="bg-gray-200 rounded px-6 py-3 block w-full overflow-auto">
@@ -104,5 +271,44 @@ function Translation({ scratch, js, comment }) {
         {comment && <div className="text-sm text-gray-600">{comment}</div>}
       </div>
     </>
+  );
+}
+
+function RandomNumberDemo({ func, funcString }) {
+  const [value, setValue] = useState(() => func());
+
+  return (
+    <div className="flex flex-col space-y-2 items-center justify-center sm:flex-row sm:space-x-8 sm:space-y-0">
+      <button
+        className="bg-indigo-700 text-white px-6 py-3 rounded font-mono"
+        onClick={() => setValue(func())}
+      >
+        <span className="block text-xs text-indigo-300 whitespace-nowrap">
+          Click to compute...
+        </span>
+        <span className="text-base whitespace-nowrap">{funcString}</span>
+      </button>
+      <span className="hidden sm:block">→</span>
+      <span className="block sm:hidden">↓</span>
+      <span className="font-mono sm:w-[21ch] overflow-hidden overflow-ellipsis">
+        {value}
+      </span>
+    </div>
+  );
+}
+
+function Accordion({ title, children }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="flex flex-col border rounded-lg divide-y">
+      <button
+        className="px-4 py-3 flex justify-between items-center"
+        onClick={() => setOpen(!open)}
+      >
+        <div>{title}</div>
+      </button>
+      {open && <div className="px-4 py-3">{children}</div>}
+    </div>
   );
 }

@@ -2,7 +2,7 @@ import scratchblocks from "scratchblocks";
 import { useEffect, useRef } from "react";
 
 export default function ScratchBlocks({
-  blockStyle,
+  blockStyle = "scratch3",
   languages,
   children,
   ...props
