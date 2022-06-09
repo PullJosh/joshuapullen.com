@@ -158,42 +158,6 @@ export default function Index() {
               </div>
             </li>
           </ul>
-
-          <h2>Math and Code</h2>
-          <p>
-            Math and code are two of the most powerful tools in human history.
-            Used effectively, they are virtually indistinguishable from magic.
-            But, powerful as they are, they can be difficult to put to good use.
-            I see two ways to solve this:{" "}
-            <strong>better tools and better education.</strong>
-          </p>
-          <p>
-            I would <em>love</em> to build better, more accessible math and
-            programming tools.{" "}
-            <a
-              href="https://leopardjs.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Leopard
-            </a>{" "}
-            is one such attempt.
-          </p>
-          <p>
-            But, although tool-building is lots of fun, I am not 100% sure that
-            my time is best spent there. It might be the case that teaching is
-            where I am most useful. There are lots of useful math and
-            programming tools already available that just need a champion to
-            spread the word.
-          </p>
-          <p>
-            Perhaps my most useful role is sharing the good news about what's
-            possible in this world, and helping people level up their skills.
-          </p>
-          <p>
-            For now, I'm just trying to find my place. As we all are, I
-            suppose...
-          </p>
         </div>
       </div>
 
