@@ -1,8 +1,13 @@
+import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import Layout from "../../../components/Layout";
-import { useState } from "react";
+import classNames from "classnames";
+
+import stringIndicies from "../../../public/images/tutorials/javascript-for-scratchers/part-4/string-indicies.svg";
+import AsideBox from "../../../components/AsideBox";
 
 const ScratchBlocks = dynamic(
   () => import("../../../components/ScratchBlocks"),
@@ -43,7 +48,9 @@ export default function Part4() {
         <Accordion
           title={
             <div className="prose sm:prose-lg">
-              <h3>Operators</h3>
+              <h3>
+                <span className="text-[#389438]">Operators</span>
+              </h3>
             </div>
           }
         >
@@ -71,6 +78,14 @@ export default function Part4() {
             />
             <Translation scratch="((7) mod (3))" js="7 % 3" />
             <Translation scratch="(round (3.5))" js="Math.round(3.5)" />
+            <Translation scratch="([abs v] of (-10))" js="Math.abs(-10)" />
+            <Translation scratch="([floor v] of (3.5))" js="Math.floor(3.5)" />
+            <Translation scratch="([ceiling v] of (3.5))" js="Math.ceil(3.5)" />
+            <Translation scratch="([sqrt v] of (9))" js="Math.sqrt(9)" />
+            <Translation scratch="([ln v] of (42))" js="Math.log(42)" />
+            <Translation scratch="([log v] of (42))" js="Math.log10(42)" />
+            <Translation scratch="([e ^ v] of (2))" js="Math.E ** 2" />
+            <Translation scratch="([10 ^ v] of (2))" js="10 ** 2" />
           </TranslationGrid>
         </Accordion>
 
@@ -247,7 +262,169 @@ export default function Part4() {
             </>
           }
         >
-          asdf
+          <div className="space-y-4">
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                To get a letter of a string in JavaScript, use the{" "}
+                <code>[]</code> syntax:
+              </p>
+            </div>
+            <TranslationGrid>
+              <Translation scratch="(letter (1) of [abcd])" js='"abcd"[0]' />
+            </TranslationGrid>
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                The trick here is that in JavaScript we always start counting
+                from 0 rather than 1.
+              </p>
+              <Image
+                src={stringIndicies}
+                alt="Strings indicies count from 0 in JavaScript"
+              />
+              <p>
+                At first, this might seem weird. But it helps simplify any math
+                in your code, and eventually you get used to it.
+              </p>
+              <AsideBox>
+                <div>
+                  We'll talk more about counting from zero{" "}
+                  <Link href="/tutorials/javascript-for-scratchers/part-7">
+                    soon
+                  </Link>
+                  .
+                </div>
+                <div>
+                  It's not just for getting the letter of a string. We do it for
+                  accessing list items too! (Although lists are called "arrays"
+                  in JavaScript.)
+                </div>
+              </AsideBox>
+              <p>
+                If you want to access a position based on a variable, you can do
+                that too:
+              </p>
+            </div>
+            <TranslationGrid>
+              <Translation
+                scratch="(letter (position) of [abcd])"
+                js='"abcd"[position]'
+              />
+            </TranslationGrid>
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                Just keep in mind that you have to count from zero, which means
+                you might need to change the way your code works a bit.
+              </p>
+              <p>
+                Or, if you're copying something over from Scratch directly, the
+                simple solution is just to subtract one right as you're getting
+                the letter:
+              </p>
+              <pre>
+                <code>"abcd"[position - 1]</code>
+              </pre>
+            </div>
+          </div>
+        </Accordion>
+        <Accordion
+          title={
+            <>
+              <ScratchBlocks>
+                ([sin / cos / tan / asin / acos / atan v] of (45) :: operators)
+              </ScratchBlocks>
+            </>
+          }
+        >
+          <div className="space-y-4">
+            <div className="prose sm:prose-lg prose-indigo">
+              <p>
+                In JavaScript, these functions operate on{" "}
+                <a href="https://www.mathsisfun.com/geometry/radians.html">
+                  radians
+                </a>{" "}
+                rather than degrees. Other than that, they're quite
+                straightforward:
+              </p>
+              <pre>
+                <code>
+                  {`Math.sin(1)
+Math.cos(1)
+Math.tan(1)
+Math.asin(1)
+Math.acos(1)
+Math.atan(1)`}
+                </code>
+              </pre>
+              <p>
+                So when you're writing JavaScript, the best thing you can do is
+                structure your code so that you're using radians everywhere.
+                That way, you can just use the built-in functions.
+              </p>
+              <AsideBox>
+                <div>
+                  If you've never heard about radians, it's worth taking a bit
+                  of time to get familiar with them. They are great because they
+                  make lots of mathematical formulas simpler.
+                </div>
+                <div>
+                  One radian is equal to about 57.3 degrees. That number might
+                  seem random, but it turns out to be really useful.
+                </div>
+                <div>
+                  If you are walking around in a circle, after 57.3 degrees (1
+                  radian) you will have walked a distance equal to the radius of
+                  the circle. Pretty handy!
+                </div>
+                <div>
+                  You can{" "}
+                  <a href="https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:trig/x2ec2f6f830c9fb89:radians/v/introduction-to-radians">
+                    learn more here
+                  </a>
+                  .
+                </div>
+              </AsideBox>
+              <p>
+                But what if you aren't using radians? Maybe you're trying to
+                convert a Scratch project to JavaScript, and it's too much
+                effort to change all the code to use radians, so you want to be
+                able to work with degrees.
+              </p>
+              <p>
+                JavaScript doesn't really have any built-in support for this,
+                but you can build it yourself.
+              </p>
+              <p>
+                These two functions convert from degrees to radians and vice
+                versa:
+              </p>
+              <pre>
+                <code>
+                  {`function degToRad(deg) {
+  return (deg * Math.PI) / 180;
+}
+
+radToDeg(rad) {
+  return (rad * 180) / Math.PI;
+}`}
+                </code>
+              </pre>
+              <p>
+                If you include them somewhere in your code, then you can use
+                them to perform degree-based versions of all the same
+                calculations:
+              </p>
+              <pre>
+                <code>
+                  {`Math.sin(degToRad(90))
+Math.cos(degToRad(90))
+Math.tan(degToRad(45))
+radToDeg(Math.asin(1))
+radToDeg(Math.acos(1))
+radToDeg(Math.atan(1))`}
+                </code>
+              </pre>
+            </div>
+          </div>
         </Accordion>
       </article>
     </Layout>
@@ -307,6 +484,15 @@ function Accordion({ title, children }) {
         onClick={() => setOpen(!open)}
       >
         <div>{title}</div>
+        <div
+          className={classNames(
+            "w-4 h-4 border-4 border-gray-800 border-t-0 border-l-0",
+            {
+              "-rotate-45 -translate-x-1": !open,
+              "rotate-45 -translate-y-1": open,
+            }
+          )}
+        />
       </button>
       {open && <div className="px-4 py-3">{children}</div>}
     </div>
