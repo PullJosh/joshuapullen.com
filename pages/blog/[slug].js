@@ -44,12 +44,30 @@ const components = {
   },
 };
 
-export default function BlogPost({ post }) {
+export default function BlogPost({ slug, post }) {
   return (
     <Layout current="blog">
       <Head>
         <title>{post.data.title} | Josh Pullen</title>
         <meta name="description" content={post.excerpt.split("\n").join("")} />
+        <meta
+          property="og:description"
+          content={post.excerpt.split("\n").join("")}
+        />
+        <meta property="og:title" content={post.data.title} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`https://joshuapullen.com/blog/${slug}`}
+        />
+        <meta
+          property="og:image"
+          content={`https://joshuapullen.com/api/og-image?name=${encodeURIComponent(
+            post.data.title
+          )}`}
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:creator" content="PullJosh" />
       </Head>
 
       <article>
@@ -90,6 +108,6 @@ export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug);
 
   return {
-    props: { post },
+    props: { slug: params.slug, post },
   };
 }
