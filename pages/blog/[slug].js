@@ -1,15 +1,48 @@
 import Head from "next/head";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { ReactMarkdownOptions } from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark as theme } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Layout from "../../components/Layout";
 import { getPostSlugs, getPostBySlug } from "../../lib/getPosts";
 
-const h2 = ({ children }) => <h2>{children}</h2>;
-const h3 = ({ children }) => <h3>{children}</h3>;
-const h4 = ({ children }) => <h4>{children}</h4>;
-const h5 = ({ children }) => <h5>{children}</h5>;
-const h6 = ({ children }) => <h6>{children}</h6>;
-const components = { h1: h2, h2: h3, h3: h4, h4: h5, h5: h6, h6: h6 };
+/** @type {ReactMarkdownOptions["components"]} */
+const components = {
+  h1: function H2({ children, id }) {
+    return <h2 id={id}>{children}</h2>;
+  },
+  h2: function H3({ children, id }) {
+    return <h3 id={id}>{children}</h3>;
+  },
+  h3: function H4({ children, id }) {
+    return <h4 id={id}>{children}</h4>;
+  },
+  h4: function H5({ children, id }) {
+    return <h5 id={id}>{children}</h5>;
+  },
+  h5: function H6({ children, id }) {
+    return <h6 id={id}>{children}</h6>;
+  },
+  h6: function H6({ children, id }) {
+    return <h6 id={id}>{children}</h6>;
+  },
+  pre: function Pre({ children }) {
+    return <>{children}</>;
+  },
+  code: function Code({ children, inline, node, className, ...props }) {
+    const match = /language-(\w+)/.exec(className || "");
+    return !inline && match ? (
+      <SyntaxHighlighter style={theme} language={match[1]} {...props}>
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
+  },
+};
 
 export default function BlogPost({ post }) {
   return (
@@ -34,7 +67,10 @@ export default function BlogPost({ post }) {
           {post.data.title}
         </h1>
         <div className="prose sm:prose-lg prose-indigo">
-          <ReactMarkdown rehypePlugins={[rehypeRaw]} components={components}>
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw, rehypeSlug]}
+            components={components}
+          >
             {post.content}
           </ReactMarkdown>
         </div>
