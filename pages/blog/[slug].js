@@ -2,6 +2,7 @@ import Head from "next/head";
 import ReactMarkdown, { ReactMarkdownOptions } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
+import markdownToTxt from "markdown-to-txt";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark as theme } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Layout from "../../components/Layout";
@@ -44,16 +45,13 @@ const components = {
   },
 };
 
-export default function BlogPost({ slug, post }) {
+export default function BlogPost({ slug, description, post }) {
   return (
     <Layout current="blog">
       <Head>
         <title>{post.data.title} | Josh Pullen</title>
-        <meta name="description" content={post.excerpt.split("\n").join("")} />
-        <meta
-          property="og:description"
-          content={post.excerpt.split("\n").join("")}
-        />
+        <meta name="description" content={description} />
+        <meta property="og:description" content={description} />
         <meta property="og:title" content={post.data.title} />
         <meta property="og:type" content="article" />
         <meta
@@ -106,8 +104,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug);
+  const description = markdownToTxt(post.excerpt.split("\n").join(""));
 
   return {
-    props: { slug: params.slug, post },
+    props: { slug: params.slug, description, post },
   };
 }
