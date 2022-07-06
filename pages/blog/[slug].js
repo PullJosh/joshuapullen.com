@@ -64,7 +64,7 @@ export default function BlogPost({ slug, description, post }) {
             post.data.title
           )}`}
         />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="PullJosh" />
       </Head>
 
