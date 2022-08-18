@@ -17,6 +17,9 @@ export default function Nav({ current, wavy = true }) {
           <NavLink href="/blog" selected={current === "blog"}>
             Blog
           </NavLink>
+          <NavLink href="/learn" selected={current === "learn"}>
+            Learn
+          </NavLink>
         </nav>
       </div>
       {wavy && <Wave />}
