@@ -4,7 +4,7 @@ import Wave from "../components/Wave";
 import Footer from "../components/Footer";
 
 import headshot from "../public/images/josh-transparent-bg.png";
-import Image from "next/image";
+import Image from "next/future/image";
 
 export default function Index() {
   return (
@@ -18,8 +18,9 @@ export default function Index() {
       <div className="bg-indigo-600 relative">
         <div className="max-w-2xl lg:max-w-4xl px-8 mx-auto pt-8 pb-16 lg:pt-24 lg:pb-32 relative">
           <div className="text-center lg:text-left">
-            <div className="w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-indigo-500 mx-auto mb-8 overflow-hidden lg:bg-transparent lg:rounded-none lg:w-96 lg:h-96 lg:m-0 lg:absolute lg:bottom-0 lg:-right-8">
+            <div className="w-32 h-32 relative sm:w-48 sm:h-48 rounded-full bg-indigo-500 mx-auto overflow-hidden lg:bg-transparent lg:rounded-none lg:w-96 lg:h-96 lg:m-0 lg:absolute lg:bottom-0 lg:-right-8">
               <Image
+                className="absolute bottom-0 w-full"
                 src={headshot}
                 alt="Photo of Josh Pullen"
                 priority={true}
@@ -43,7 +44,7 @@ export default function Index() {
 
       <div className="py-16 bg-white">
         <div className="max-w-2xl px-8 mx-auto prose sm:prose-lg md:prose-xl">
-          <h2>Things I've Made</h2>
+          <h2>Things I Made</h2>
           <ul>
             <li>
               <strong>
@@ -97,6 +98,29 @@ export default function Index() {
                 JavaScript, this could be the tool for you.
               </div>
             </li>
+          </ul>
+
+          <h2>Work in Progress</h2>
+          <ul>
+            <li>
+              <strong>
+                <a href="https://clown-school.vercel.app/real-analysis">
+                  Clown School
+                </a>
+              </strong>
+              <div>
+                Simple, interactive, and visual explanations of the math that
+                textbooks make confusing. (Just real analysis for right now.)
+              </div>
+            </li>
+            <li>
+              <strong>
+                <a href="" target="_blank" rel="noreferrer">
+                  Graphing Calculator
+                </a>
+              </strong>
+              <div>I can't believe it's not Desmos!</div>
+            </li>
             <li>
               <strong>
                 <a
@@ -108,10 +132,13 @@ export default function Index() {
                 </a>
               </strong>
               <div>
-                This one is still a work in progress. It's a random collection
-                of utilities that teachers may find useful.
+                A collection of utilities that teachers may find useful.
               </div>
             </li>
+          </ul>
+
+          <h2>Old Stuff I Made</h2>
+          <ul>
             <li>
               <strong>
                 <a
