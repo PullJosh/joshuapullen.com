@@ -104,22 +104,22 @@ export default function Index() {
           <ul>
             <li>
               <strong>
-                <a href="https://clown-school.vercel.app/real-analysis">
+                <a href="https://joshs-graphing-calculator.vercel.app/" target="_blank" rel="noreferrer">
+                  Josh's Graphing Calculator
+                </a>
+              </strong>
+              <div>I can't believe it's not Desmos!</div>
+            </li>
+            <li>
+              <strong>
+                <a href="https://clown-school.vercel.app/" target="_blank" rel="noreferrer">
                   Clown School
                 </a>
               </strong>
               <div>
                 Simple, interactive, and visual explanations of the math that
-                textbooks make confusing. (Just real analysis for right now.)
+                textbooks make confusing.
               </div>
-            </li>
-            <li>
-              <strong>
-                <a href="" target="_blank" rel="noreferrer">
-                  Graphing Calculator
-                </a>
-              </strong>
-              <div>I can't believe it's not Desmos!</div>
             </li>
             <li>
               <strong>
