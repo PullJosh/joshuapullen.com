@@ -6,8 +6,8 @@ export default function Nav({ current, wavy = true }) {
   return (
     <header className={classNames("bg-indigo-600 relative", { "pb-3": wavy })}>
       <div className="max-w-2xl px-8 py-6 mx-auto flex flex-col space-y-4 xxs:flex-row xxs:space-y-0 items-center justify-between">
-        <Link href="/">
-          <a className="text-white text-xl font-medium">Josh Pullen</a>
+        <Link href="/" className="text-white text-xl font-medium">
+          Josh Pullen
         </Link>
 
         <nav className="flex items-center space-x-4">
@@ -29,15 +29,15 @@ export default function Nav({ current, wavy = true }) {
 
 function NavLink({ children, href, selected = false }) {
   return (
-    <Link href={href}>
-      <a
-        className={classNames("text-white px-4 py-2 rounded-lg", {
-          "hover:bg-indigo-700": !selected,
-          "bg-indigo-800": selected,
-        })}
-      >
-        {children}
-      </a>
-    </Link>
+    (<Link
+      href={href}
+      className={classNames("text-white px-4 py-2 rounded-lg", {
+        "hover:bg-indigo-700": !selected,
+        "bg-indigo-800": selected,
+      })}>
+
+      {children}
+
+    </Link>)
   );
 }

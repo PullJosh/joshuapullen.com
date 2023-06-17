@@ -19,33 +19,36 @@ export default function Blog({ posts }) {
       <div className="-my-4">
         {posts.map((post) => {
           return (
-            <Link href={`/blog/${post.slug}`} key={post.slug}>
-              <a className="block px-5 -mx-5 py-4 rounded-lg hover:bg-gray-200">
-                <time
-                  className="text-gray-700"
-                  dateTime={new Date(post.data.date).toISOString()}
+            (<Link
+              href={`/blog/${post.slug}`}
+              key={post.slug}
+              className="block px-5 -mx-5 py-4 rounded-lg hover:bg-gray-200">
+
+              <time
+                className="text-gray-700"
+                dateTime={new Date(post.data.date).toISOString()}
+              >
+                {new Date(post.data.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+              <h2 className="mb-2 text-xl sm:text-3xl font-bold leading-tight text-gray-900">
+                {post.data.title}
+              </h2>
+              <div className="prose sm:prose-lg prose-indigo">
+                <ReactMarkdown
+                  components={{
+                    a: ({ children }) => children,
+                    img: () => null,
+                  }}
                 >
-                  {new Date(post.data.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-                <h2 className="mb-2 text-xl sm:text-3xl font-bold leading-tight text-gray-900">
-                  {post.data.title}
-                </h2>
-                <div className="prose sm:prose-lg prose-indigo">
-                  <ReactMarkdown
-                    components={{
-                      a: ({ children }) => children,
-                      img: () => null,
-                    }}
-                  >
-                    {`${post.excerpt}...`}
-                  </ReactMarkdown>
-                </div>
-              </a>
-            </Link>
+                  {`${post.excerpt}...`}
+                </ReactMarkdown>
+              </div>
+
+            </Link>)
           );
         })}
       </div>

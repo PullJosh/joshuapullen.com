@@ -4,7 +4,7 @@ import Wave from "../components/Wave";
 import Footer from "../components/Footer";
 
 import headshot from "../public/images/josh-transparent-bg.png";
-import Image from "next/future/image";
+import Image from "next/image";
 
 export default function Index() {
   return (
@@ -104,7 +104,11 @@ export default function Index() {
           <ul>
             <li>
               <strong>
-                <a href="https://joshs-graphing-calculator.vercel.app/" target="_blank" rel="noreferrer">
+                <a
+                  href="https://joshs-graphing-calculator.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Josh's Graphing Calculator
                 </a>
               </strong>
@@ -112,7 +116,11 @@ export default function Index() {
             </li>
             <li>
               <strong>
-                <a href="https://clown-school.vercel.app/" target="_blank" rel="noreferrer">
+                <a
+                  href="https://clown-school.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Clown School
                 </a>
               </strong>
