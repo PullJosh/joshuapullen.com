@@ -5,6 +5,42 @@ import Footer from "../components/Footer";
 
 import headshot from "../public/images/josh-transparent-bg.png";
 import Image from "next/image";
+import Link from "next/link";
+
+const socialLinks = [
+  {
+    name: "Scratch",
+    url: "https://scratch.mit.edu/users/PullJosh/",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/PullJosh",
+  },
+  {
+    name: "Threads",
+    url: "https://www.threads.net/@joshpullen27",
+  },
+  {
+    name: "Github",
+    url: "https://github.com/PullJosh",
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/c/PullJosh",
+  },
+  {
+    name: "Dribbble",
+    url: "https://dribbble.com/PullJosh",
+  },
+  {
+    name: "Discord",
+    url: "https://discord.com/users/217081065863380992",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/joshpullen/",
+  },
+];
 
 export default function Index() {
   return (
@@ -29,13 +65,27 @@ export default function Index() {
               />
             </div>
 
-            <h3 className="text-2xl sm:text-4xl text-indigo-300">
+            <h1 className="text-2xl sm:text-4xl text-indigo-300">
               Hi! I'm Josh Pullen.
-            </h3>
-            <h1 className="text-4xl sm:text-7xl font-extrabold text-white whitespace-nowrap">
+            </h1>
+            <h2 className="text-4xl sm:text-7xl font-extrabold text-white whitespace-nowrap">
               I love <span className="text-yellow-300">education</span> <br />
               and <span className="text-green-400">technology</span>.
-            </h1>
+            </h2>
+            <ul className="mt-4 space-x-3">
+              {socialLinks.map((link) => (
+                <li key={link.name} className="inline-block">
+                  <Link
+                    href={link.url}
+                    className="text-indigo-400 hover:text-white"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
