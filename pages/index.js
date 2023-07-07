@@ -11,34 +11,42 @@ const socialLinks = [
   {
     name: "Scratch",
     url: "https://scratch.mit.edu/users/PullJosh/",
+    icon: "/images/social-icons/scratch.svg",
   },
   {
     name: "Twitter",
     url: "https://twitter.com/PullJosh",
+    icon: "/images/social-icons/twitter.svg",
   },
   {
     name: "Threads",
     url: "https://www.threads.net/@joshpullen27",
+    icon: "/images/social-icons/threads.svg",
   },
   {
     name: "Github",
     url: "https://github.com/PullJosh",
+    icon: "/images/social-icons/github.svg",
   },
   {
     name: "YouTube",
     url: "https://www.youtube.com/c/PullJosh",
+    icon: "/images/social-icons/youtube.svg",
   },
   {
     name: "Dribbble",
     url: "https://dribbble.com/PullJosh",
+    icon: "/images/social-icons/dribbble.svg",
   },
   {
     name: "Discord",
     url: "https://discord.com/users/217081065863380992",
+    icon: "/images/social-icons/discord.svg",
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/joshpullen/",
+    icon: "/images/social-icons/linkedin.svg",
   },
 ];
 
@@ -72,17 +80,23 @@ export default function Index() {
               I love <span className="text-yellow-300">education</span> <br />
               and <span className="text-green-400">technology</span>.
             </h2>
-            <ul className="mt-4 space-x-3">
+            <ul className="mt-4 -mx-2">
               {socialLinks.map((link) => (
                 <li key={link.name} className="inline-block">
-                  <Link
+                  <a
                     href={link.url}
-                    className="text-indigo-400 hover:text-white"
+                    className="group block p-2 text-indigo-400 hover:text-white"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {link.name}
-                  </Link>
+                    <img
+                      className="w-7 h-7 sm:w-8 sm:h-8 object-contain group-hover:brightness-200"
+                      src={link.icon}
+                      alt={`${link.name} logo`}
+                      title={link.name}
+                    />
+                    <span className="sr-only">{link.name}</span>
+                  </a>
                 </li>
               ))}
             </ul>
