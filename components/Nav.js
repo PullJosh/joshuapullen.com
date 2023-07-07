@@ -17,9 +17,6 @@ export default function Nav({ current, wavy = true }) {
           <NavLink href="/blog" selected={current === "blog"}>
             Blog
           </NavLink>
-          <NavLink href="/learn" selected={current === "learn"}>
-            Learn
-          </NavLink>
         </nav>
       </div>
       {wavy && <Wave />}
@@ -29,15 +26,14 @@ export default function Nav({ current, wavy = true }) {
 
 function NavLink({ children, href, selected = false }) {
   return (
-    (<Link
+    <Link
       href={href}
       className={classNames("text-white px-4 py-2 rounded-lg", {
         "hover:bg-indigo-700": !selected,
         "bg-indigo-800": selected,
-      })}>
-
+      })}
+    >
       {children}
-
-    </Link>)
+    </Link>
   );
 }
