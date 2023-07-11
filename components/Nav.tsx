@@ -2,11 +2,29 @@ import Link from "next/link";
 import classNames from "classnames";
 import Wave from "./Wave";
 
-export default function Nav({ current, wavy = true }) {
+interface NavProps {
+  current: string;
+  wavy?: boolean;
+  waveClassName?: string;
+}
+
+export default function Nav({
+  current,
+  wavy = true,
+  waveClassName = undefined,
+}: NavProps) {
   return (
-    <header className={classNames("bg-indigo-600 relative", { "pb-3": wavy })}>
+    <header
+      className={classNames("bg-indigo-600 relative overflow-hidden", {
+        "pb-3": wavy,
+      })}
+    >
       <div className="max-w-2xl px-8 py-6 mx-auto flex flex-col space-y-4 xxs:flex-row xxs:space-y-0 items-center justify-between">
-        <Link href="/" className="text-white text-xl font-medium">
+        <Link
+          href="/"
+          className="text-white text-xl font-medium"
+          passHref={true}
+        >
           Josh Pullen
         </Link>
 
@@ -17,14 +35,23 @@ export default function Nav({ current, wavy = true }) {
           <NavLink href="/blog" selected={current === "blog"}>
             Blog
           </NavLink>
+          {/* <NavLink href="/projects" selected={current === "projects"}>
+            Projects
+          </NavLink> */}
         </nav>
       </div>
-      {wavy && <Wave />}
+      {wavy && <Wave className={waveClassName} />}
     </header>
   );
 }
 
-function NavLink({ children, href, selected = false }) {
+interface NavLinkProps {
+  children: React.ReactNode;
+  href: string;
+  selected?: boolean;
+}
+
+function NavLink({ children, href, selected = false }: NavLinkProps) {
   return (
     <Link
       href={href}
