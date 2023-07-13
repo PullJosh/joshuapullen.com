@@ -204,55 +204,69 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="mt-8 max-w-6xl px-8 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
-            <ProjectCard
-              title="Josh's Graphing Calculator"
-              date="Summer 2023"
-              url="https://joshs-graphing-calculator.vercel.app/"
-              logo={{
-                shape: "circle",
-                className: "fill-blue-300",
-              }}
-              screenshot={{
-                src: JGCComplexExpression,
-                alt: "Screenshot of Josh's Graphing Calculator",
-              }}
-            >
-              I can't believe it's not Desmos!
-            </ProjectCard>
-            <ProjectCard
-              title="Clown School"
-              date="Summer 2022"
-              url="https://clown-school.vercel.app/"
-              logo={{
-                // shape: "square",
-                // className: "fill-red-300",
-                src: ClownSchoolLogo,
-                alt: "Clown School Logo",
-              }}
-              screenshot={{
-                src: ClownSchoolScreenshot,
-                alt: "Screenshot of Clown School",
-              }}
-            >
-              Simple, interactive, and visual explanations of the math that
-              textbooks make confusing.
-            </ProjectCard>
-            <ProjectCard
-              title="Teaching Tools"
-              date="Summer 2021"
-              url="https://teacher-tools.joshuapullen.com/"
-              logo={{
-                shape: "triangle",
-                className: "fill-green-300",
-              }}
-              screenshot={{
-                src: TeachingToolsScreenshot,
-                alt: "Screenshot of Teaching Tools",
-              }}
-            >
-              A collection of utilities that teachers may find useful.
-            </ProjectCard>
+          <div className="mt-8 max-w-6xl px-8 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
+              <ProjectCard
+                title="Josh's Graphing Calculator"
+                date="Summer 2023"
+                url="https://joshs-graphing-calculator.vercel.app/"
+                logo={{
+                  shape: "circle",
+                  className: "fill-blue-300",
+                }}
+                screenshot={{
+                  src: JGCComplexExpression,
+                  alt: "Screenshot of Josh's Graphing Calculator",
+                }}
+              >
+                I can't believe it's not Desmos!
+              </ProjectCard>
+              <ProjectCard
+                title="Clown School"
+                date="Summer 2022"
+                url="https://clown-school.vercel.app/"
+                logo={{
+                  // shape: "square",
+                  // className: "fill-red-300",
+                  src: ClownSchoolLogo,
+                  alt: "Clown School Logo",
+                }}
+                screenshot={{
+                  src: ClownSchoolScreenshot,
+                  alt: "Screenshot of Clown School",
+                }}
+              >
+                Simple, interactive, and visual explanations of the math that
+                textbooks make confusing.
+              </ProjectCard>
+              <ProjectCard
+                title="Teaching Tools"
+                date="Summer 2021"
+                url="https://teacher-tools.joshuapullen.com/"
+                logo={{
+                  shape: "triangle",
+                  className: "fill-green-300",
+                }}
+                screenshot={{
+                  src: TeachingToolsScreenshot,
+                  alt: "Screenshot of Teaching Tools",
+                }}
+              >
+                A collection of utilities that teachers may find useful.
+              </ProjectCard>
+            </div>
+
+            <div className="mt-6 max-w-lg px-8 mx-auto sm: text-center">
+              I am trying not to start any new projects right now, but I do have
+              a{" "}
+              <Link
+                href="/ideas"
+                className="text-indigo-600 underline font-semibold"
+              >
+                list of ideas
+              </Link>{" "}
+              here.
+            </div>
           </div>
         </div>
         <div>
