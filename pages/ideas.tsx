@@ -50,6 +50,47 @@ export default function Ideas() {
             </p>
           </li>
         </ul>
+
+        <h2>Website Annotation Tool (for drawing all over the internet)</h2>
+        <p>(This idea spawned from the previous one.)</p>
+        <p>
+          In real life, a wonderful trick for remembering things is to put
+          physical reminders in your actual world. If you need to wear a certain
+          shirt for an event, hang it someplace you can't miss it. If you need
+          to bring something with you to an event, put it in your car the night
+          before.
+        </p>
+        <p>
+          <strong>Digital sticky notes & annotations</strong> would allow us to
+          do this online too.
+        </p>
+        <ul>
+          <li>
+            <p>
+              On every website, allow the user to place down sticky notes,
+              highlight text, draw pictures, and so on. That way, when they
+              return to the same page later, their note will be waiting for
+              them.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let the user include todos and reminders in their annotations. The
+              physical note on the page can serve as a reminder, but the user
+              could also find <em>all</em> of their todos on one central list
+              (without needing to return to the location where they placed the
+              note). That way you never lose anything.
+            </p>
+          </li>
+          <li>
+            <p>
+              Also allow the user to add annotations with reminders that fire at
+              a certain time. At that time (or place, or whatever), the browser
+              could remind you to come back to that page and do whatever you
+              need to do.
+            </p>
+          </li>
+        </ul>
       </div>
     </Layout>
   );
