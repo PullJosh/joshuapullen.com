@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 export default function Ideas() {
   return (
@@ -19,7 +20,28 @@ export default function Ideas() {
           new ideas, so I am keeping track of them here.
         </p>
 
-        <h2>A todo list/task manager/calendar for teachers</h2>
+        <h3>Table of Contents</h3>
+        <ul>
+          <li>
+            <Link href="#teacher-todo-list">
+              A todo list/task manager/calendar for teachers
+            </Link>
+          </li>
+          <li>
+            <Link href="#website-annotation">
+              Website Annotation Tool (for drawing all over the internet)
+            </Link>
+          </li>
+          <li>
+            <Link href="#low-stakes-database">
+              Super Easy Low-Stakes Database for Tiny Projects
+            </Link>
+          </li>
+        </ul>
+
+        <h2 id="teacher-todo-list">
+          A todo list/task manager/calendar for teachers
+        </h2>
         <p>
           There is an infinite need for new task managers because everyone
           thinks & works differently. I've never found one that works for me,
@@ -51,7 +73,9 @@ export default function Ideas() {
           </li>
         </ul>
 
-        <h2>Website Annotation Tool (for drawing all over the internet)</h2>
+        <h2 id="website-annotation">
+          Website Annotation Tool (for drawing all over the internet)
+        </h2>
         <p>(This idea spawned from the previous one.)</p>
         <p>
           In real life, a wonderful trick for remembering things is to put
@@ -91,6 +115,58 @@ export default function Ideas() {
             </p>
           </li>
         </ul>
+
+        <h2 id="low-stakes-database">
+          Super Easy Low-Stakes Database for Tiny Projects
+        </h2>
+        <p>
+          I sometimes make tiny websites, games, etc. that need a database.
+          Sometimes I want to store just a couple of values (some settings or
+          information about the website). Sometimes I want to store a
+          leaderboard of top scores in a game. Sometimes I want users to be able
+          to create & publish extremely small objects of some kind.
+        </p>
+        <p>
+          Setting up an entire database is overkill when all I want to do is
+          store a tiny bit of data for a personal project, so why not make a
+          tiny one?
+        </p>
+        <ul>
+          <li>
+            <p>
+              <strong>A tiny data store for tiny projects.</strong> No
+              complicated SQL setup. No sharding or indexes. Nothing like that.
+              This is for tiny projects that just need to store a few things.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>No backend necessary.</strong> Some projects a personal.
+              Maybe you're making a website for just a few friends. You don't
+              need top-notch security, you just want to bodge together something
+              that works for a few people you trust. If you want to read and
+              write to your data store directly from the frontend, you should be
+              able to via some simple API calls.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Easy manual editing.</strong> When you're working on a
+              tiny project, you might not want to set up an entire admin view.
+              But you <em>do</em> want to have quick & easy access to your data
+              so you can read & change it manually.
+            </p>
+          </li>
+        </ul>
+        <p>
+          To accomplish the above goals, I propose a tool that makes it possible
+          to read & write to JSON files. Via a web frontend or an API, you can
+          create a JSON file that's hosted on the web. Then, you can read &
+          write to and from that file via an API. If you'd like to
+          password-protect that file you can, or you can let anyone edit it
+          without any permissions necessary (for extremely small & loose
+          projects).
+        </p>
       </div>
     </Layout>
   );
