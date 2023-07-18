@@ -29,12 +29,22 @@ export default function Ideas() {
           </li>
           <li>
             <Link href="#website-annotation">
-              Website Annotation Tool (for drawing all over the internet)
+              Website annotation tool (for drawing all over the internet)
             </Link>
           </li>
           <li>
             <Link href="#low-stakes-database">
-              Super Easy Low-Stakes Database for Tiny Projects
+              Super easy, low-stakes database for tiny projects
+            </Link>
+          </li>
+          <li>
+            <Link href="#language-for-live-streaming">
+              A programming language & editor optimized for live-streaming
+            </Link>
+          </li>
+          <li>
+            <Link href="#joint-todo-list">
+              Joint to-do list app for couples (or friends)
             </Link>
           </li>
         </ul>
@@ -74,7 +84,7 @@ export default function Ideas() {
         </ul>
 
         <h2 id="website-annotation">
-          Website Annotation Tool (for drawing all over the internet)
+          Website annotation tool (for drawing all over the internet)
         </h2>
         <p>(This idea spawned from the previous one.)</p>
         <p>
@@ -117,7 +127,7 @@ export default function Ideas() {
         </ul>
 
         <h2 id="low-stakes-database">
-          Super Easy Low-Stakes Database for Tiny Projects
+          Super easy, low-stakes database for tiny projects
         </h2>
         <p>
           I sometimes make tiny websites, games, etc. that need a database.
@@ -166,6 +176,47 @@ export default function Ideas() {
           password-protect that file you can, or you can let anyone edit it
           without any permissions necessary (for extremely small & loose
           projects).
+        </p>
+
+        <h2 id="language-for-live-streaming">
+          A programming language & editor optimized for live-streaming
+        </h2>
+        <p>
+          Although people try, coding is one of the least live-streamable
+          activities out there. It's almost impossible to watch someone else
+          code, because so much is happening in the brain of the programmer that
+          is not visible on the screen.
+        </p>
+        <p>
+          <strong>
+            I want to see a programming language that puts your thinking on the
+            page.
+          </strong>{" "}
+          What would it look like to program in a language optimized for showing
+          your thought process as you make changes? Surely it would be better
+          for individual programmers too.
+        </p>
+
+        <h2 id="joint-todo-list">
+          Joint to-do list app for couples (or friends)
+        </h2>
+        <p>
+          A todo list is great for reminding me of the tasks that I need to
+          accomplish.{" "}
+          <strong>
+            But sometimes I need more than a reminder. I need{" "}
+            <em>motivation</em>.
+          </strong>
+        </p>
+        <p>
+          A simple phone notification just doesn't do it.{" "}
+          <em>My phone doesn't know better than I do</em>, I think, and I
+          certainly don't have to do what it tells me to!
+        </p>
+        <p>
+          But what if, when I haven't gone on a run in a long time, my phone
+          doesn't notify me&mdash;it notifies my partner? Who can then convince
+          me to get out and do it. That would certainly help.
         </p>
       </div>
     </Layout>
