@@ -47,6 +47,9 @@ export default function Ideas() {
               Joint to-do list app for couples (or friends)
             </Link>
           </li>
+          <li>
+            <Link href="#ai-code-merger">AI Code Merger</Link>
+          </li>
         </ul>
 
         <h2 id="teacher-todo-list">
@@ -217,6 +220,65 @@ export default function Ideas() {
           But what if, when I haven't gone on a run in a long time, my phone
           doesn't notify me&mdash;it notifies my partner? Who can then convince
           me to get out and do it. That would certainly help.
+        </p>
+
+        <h2 id="ai-code-merger">AI Code Merger</h2>
+        <p>
+          <strong>Merge conflicts are infuriating.</strong> They're extremely
+          confusing to solve, and feel like they shouldn't be necessary.
+        </p>
+        <p>
+          The fundamental problem is this: My friend and I are collaborating on
+          a code project. On my computer, I write the code for Feature A. On her
+          computer, my friend writes the code for Feature B. When we get back
+          together, we should have a complete project with both features. But
+          it's not actually that simple.
+        </p>
+        <p>
+          Code is extraordinarily finicky. A single mistake or mismatch anywhere
+          in the code can break the entire project. And features need to be
+          carefully integrated with each other to work properly. This is why we
+          can't just collaborate in real-time in the first place; two changes
+          being made at the same time can conflict with each other and need to
+          be carefully merged together.
+        </p>
+        <p>
+          <strong>
+            Merging code changes is a process that is too complex to write a
+            straightforward algorithm for, but too tedious and painstaking for a
+            human to enjoy.
+          </strong>{" "}
+          Fundamentally, it's a complex writing problem&mdash;perfect for a
+          large language model.
+        </p>
+        <p>
+          <strong>
+            So here's the pitch: Create an AI system that can take two versions
+            of a codebase and intelligently merge them into a single, functional
+            repository.
+          </strong>{" "}
+          Basically, an AI that handles merge conflicts.
+        </p>
+        <p>
+          If you built this successfully, and it could operate in near-realtime,
+          it would unlock a whole new paradigm for collaborating on code.
+        </p>
+        <p>
+          Imagine a world where two people are collaborating in real-time,
+          Google Docs style, on a codebase. Currently, this doesn't work because{" "}
+          <em>somebody</em> always has a syntax error or the two features step
+          on each other's toes or <em>something</em>. It's just not feasible.
+        </p>
+        <p>
+          But if an AI system could be constantly working under the hood to
+          patch out broken features with feature flags & fix conflicts when two
+          changes occur in roughly the same place, you could imagine a world
+          where real-time code collaboration is possible.
+        </p>
+        <p>
+          Designing a code editor that makes this process make sense would be a
+          bit of a heavy lift, but I don't see why it wouldn't be possible. And
+          it could completely change the way we collaborate on code.
         </p>
       </div>
     </Layout>
