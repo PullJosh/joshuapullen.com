@@ -29,16 +29,6 @@ const socialLinks = [
     icon: "/images/social-icons/scratch.svg",
   },
   {
-    name: "Twitter",
-    url: "https://twitter.com/PullJosh",
-    icon: "/images/social-icons/twitter.svg",
-  },
-  {
-    name: "Threads",
-    url: "https://www.threads.net/@joshpullen27",
-    icon: "/images/social-icons/threads.svg",
-  },
-  {
     name: "Github",
     url: "https://github.com/PullJosh",
     icon: "/images/social-icons/github.svg",
@@ -47,6 +37,16 @@ const socialLinks = [
     name: "YouTube",
     url: "https://www.youtube.com/c/PullJosh",
     icon: "/images/social-icons/youtube.svg",
+  },
+  {
+    name: "Threads",
+    url: "https://www.threads.net/@joshpullen27",
+    icon: "/images/social-icons/threads.svg",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/PullJosh",
+    icon: "/images/social-icons/twitter.svg",
   },
   {
     name: "Dribbble",
