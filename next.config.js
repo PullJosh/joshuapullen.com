@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   async redirects() {
     return [
       {
@@ -8,4 +9,15 @@ module.exports = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      // Match Contentful hosted images
+      {
+        hostname: "images.ctfassets.net",
+        protocol: "https",
+      },
+    ],
+  },
 };
+
+module.exports = nextConfig;

@@ -1,26 +1,30 @@
-import Head from "next/head";
 import Nav from "../components/Nav";
 import Wave from "../components/Wave";
 import Footer from "../components/Footer";
 
 import Image, { ImageProps } from "next/image";
 import headshot from "../public/images/josh-transparent-bg.png";
-import RocketSpellingLogo from "../public/images/project-logos/rocket-spelling.svg";
-import RocketSpellingScreenshot from "../public/images/projects/rocket-spelling/rocket-spelling-screenshot.jpg";
-import ThreeBlueOneBrown from "../public/images/project-logos/3blue1brown.svg";
-import ThreeBlueOneBrownScreenshot from "../public/images/projects/3blue1brown/3blue1brown-screenshot.jpg";
-import Leopard from "../public/images/project-logos/leopard.svg";
-import LeopardHeaderImage from "../public/images/projects/leopard/leopard-header-image.png";
-import JGCComplexExpression from "../public/images/projects/joshs-graphing-calculator/jgc-complex-expression.png";
-import ClownSchoolLogo from "../public/images/project-logos/clown-school.png";
-import ClownSchoolScreenshot from "../public/images/projects/clown-school/clown-school-screenshot.jpg";
-import TeachingToolsScreenshot from "../public/images/projects/teaching-tools/teaching-tools-screenshot.jpg";
-import OMLScreenshot from "../public/images/projects/online-math-league/oml-screenshot.jpg";
-import ThirdGradeMathGamesScreenshot from "../public/images/projects/third-grade-math-games/third-grade-math-games-screenshot.jpg";
-import TechCampsPhoto from "../public/images/projects/tech-camps/tech-camps-photo.jpg";
 import Link from "next/link";
 
 import classNames from "classnames";
+
+import { cacheExchange, createClient, fetchExchange, gql } from "@urql/core";
+import { registerUrql } from "@urql/next/rsc";
+import { FragmentType, graphql, useFragment } from "../gql";
+
+const makeClient = () => {
+  return createClient({
+    url: process.env.CONTENTFUL_GRAPHQL_ENDPOINT!,
+    fetchOptions: () => ({
+      headers: {
+        authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+      },
+    }),
+    exchanges: [cacheExchange, fetchExchange],
+  });
+};
+
+const { getClient } = registerUrql(makeClient);
 
 const socialLinks = [
   {
@@ -65,13 +69,13 @@ const socialLinks = [
   },
 ];
 
-export default function Index() {
+export default async function Index() {
+  const result = await getClient().query(projectsQuery, {});
+
+  const projects = result.data?.projectCollection?.items ?? [];
+
   return (
     <>
-      <Head>
-        <title>Josh Pullen</title>
-      </Head>
-
       <Nav current="home" wavy={false} />
 
       <div className="bg-indigo-600 relative">
@@ -137,56 +141,18 @@ export default function Index() {
             </h2>
           </div>
           <div className="mt-8 max-w-6xl px-8 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
-            <ProjectCard
-              title="Rocket Spelling"
-              date="Summer 2016 (Age 14)"
-              url="https://www.rocketspelling.com/"
-              // infoUrl="/projects/rocket-spelling"
-              logo={{
-                src: RocketSpellingLogo,
-                alt: "Rocket Spelling Logo",
-              }}
-              screenshot={{
-                src: RocketSpellingScreenshot,
-                alt: "Rocket Spelling Screenshot",
-              }}
-            >
-              Online spelling practice for elementary students.
-            </ProjectCard>
-            <ProjectCard
-              title="Lessons on 3Blue1Brown.com"
-              date="Summer 2021 (Age 19)"
-              url="https://www.3blue1brown.com/"
-              logo={{
-                src: ThreeBlueOneBrown,
-                alt: "3Blue1Brown Logo",
-              }}
-              screenshot={{
-                src: ThreeBlueOneBrownScreenshot,
-                alt: "3Blue1Brown Screenshot",
-              }}
-            >
-              I was hired as an intern to create online math lessons. Working
-              with the team was a ton of fun, and I'm really proud of what we
-              made.
-            </ProjectCard>
-            <ProjectCard
-              title="Leopard"
-              date="Fall 2018 (Age 17)"
-              url="https://leopardjs.com/"
-              logo={{
-                src: Leopard,
-                alt: "Leopard Logo",
-              }}
-              screenshot={{
-                src: LeopardHeaderImage,
-                alt: "Image of Leopard conversion from Scratch blocks to Javascript code",
-              }}
-            >
-              Leopard is a tool that converts Scratch projects into JavaScript
-              code. If you're looking to learn JavaScript, this could be the
-              tool for you.
-            </ProjectCard>
+            {projects
+              .filter(
+                (project) =>
+                  project!.importance === "important" &&
+                  project!.status === "completed"
+              )
+              .map((project) => (
+                <ProjectCardFromGraphQL
+                  key={project!.sys.id}
+                  project={project!}
+                />
+              ))}
           </div>
         </div>
         <div>
@@ -206,54 +172,14 @@ export default function Index() {
 
           <div className="mt-8 max-w-6xl px-8 mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
-              <ProjectCard
-                title="Josh's Graphing Calculator"
-                date="Summer 2023"
-                url="https://joshs-graphing-calculator.vercel.app/"
-                logo={{
-                  shape: "circle",
-                  className: "fill-blue-300",
-                }}
-                screenshot={{
-                  src: JGCComplexExpression,
-                  alt: "Screenshot of Josh's Graphing Calculator",
-                }}
-              >
-                I can't believe it's not Desmos!
-              </ProjectCard>
-              <ProjectCard
-                title="Clown School"
-                date="Summer 2022"
-                url="https://clown-school.vercel.app/"
-                logo={{
-                  // shape: "square",
-                  // className: "fill-red-300",
-                  src: ClownSchoolLogo,
-                  alt: "Clown School Logo",
-                }}
-                screenshot={{
-                  src: ClownSchoolScreenshot,
-                  alt: "Screenshot of Clown School",
-                }}
-              >
-                Simple, interactive, and visual explanations of the math that
-                textbooks make confusing.
-              </ProjectCard>
-              <ProjectCard
-                title="Teaching Tools"
-                date="Summer 2021"
-                url="https://teacher-tools.joshuapullen.com/"
-                logo={{
-                  shape: "triangle",
-                  className: "fill-green-300",
-                }}
-                screenshot={{
-                  src: TeachingToolsScreenshot,
-                  alt: "Screenshot of Teaching Tools",
-                }}
-              >
-                A collection of utilities that teachers may find useful.
-              </ProjectCard>
+              {projects
+                .filter((project) => project!.status === "in-progress")
+                .map((project) => (
+                  <ProjectCardFromGraphQL
+                    key={project!.sys.id}
+                    project={project!}
+                  />
+                ))}
             </div>
 
             <div className="mt-6 max-w-lg px-8 mx-auto sm: text-center">
@@ -285,38 +211,18 @@ export default function Index() {
           </div>
 
           <div className="mt-8 max-w-6xl px-8 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
-            <ProjectCard
-              title="Online Math League Website"
-              date="Summer 2018"
-              screenshot={{
-                src: OMLScreenshot,
-                alt: "Screenshot of Online Math League Website",
-              }}
-            >
-              I was hired to create the new Online Math League website.
-            </ProjectCard>
-            <ProjectCard
-              title="Third Grade Math Games"
-              date="Winter 2017"
-              url="https://pulljosh.github.io/thirdgrademathgames/"
-              screenshot={{
-                src: ThirdGradeMathGamesScreenshot,
-                alt: "Screenshot of Third Grade Math Games",
-              }}
-            >
-              A collection of math games made for 3rd grade students.
-            </ProjectCard>
-            <ProjectCard
-              title="Technology Camps for Kids"
-              date="Summer 2016 & 2017"
-              screenshot={{
-                src: TechCampsPhoto,
-                alt: "Photo of me teaching a class",
-              }}
-            >
-              Nothing beats teaching people face-to-face. It's so fun to watch
-              kids' faces light up when they get something to work.
-            </ProjectCard>
+            {projects
+              .filter(
+                (project) =>
+                  project!.importance !== "important" &&
+                  project!.status === "completed"
+              )
+              .map((project) => (
+                <ProjectCardFromGraphQL
+                  key={project!.sys.id}
+                  project={project!}
+                />
+              ))}
           </div>
         </div>
       </div>
@@ -328,7 +234,8 @@ export default function Index() {
 
 interface ProjectCardProps {
   title: string;
-  date?: string;
+  createdAt?: Date;
+  showAge?: boolean | "auto";
   children: React.ReactNode;
   url?: string;
   infoUrl?: string;
@@ -336,6 +243,8 @@ interface ProjectCardProps {
     | {
         src: ImageProps["src"];
         alt: string;
+        width?: number;
+        height?: number;
       }
     | {
         shape: "circle" | "square" | "triangle";
@@ -344,12 +253,35 @@ interface ProjectCardProps {
   screenshot?: {
     src: ImageProps["src"];
     alt: string;
+    width?: number;
+    height?: number;
   };
+}
+
+function dateSeason(date: Date) {
+  const month = date.getMonth();
+  const season = {
+    0: "Winter", // January
+    1: "Winter", // February
+    2: "Spring", // March
+    3: "Spring", // April
+    4: "Spring", // May
+    5: "Summer", // June
+    6: "Summer", // July
+    7: "Summer", // August
+    8: "Fall", // September
+    9: "Fall", // October
+    10: "Fall", // November
+    11: "Winter", // December
+  }[month];
+
+  return season;
 }
 
 function ProjectCard({
   title,
-  date,
+  createdAt,
+  showAge = "auto",
   children,
   url,
   infoUrl,
@@ -358,6 +290,17 @@ function ProjectCard({
 }: ProjectCardProps) {
   const href = infoUrl ?? url;
   const openInNewTab = !infoUrl;
+
+  let dateStr = `${dateSeason(createdAt!)} ${createdAt!.getFullYear()}`;
+
+  // How old I was when I made this project
+  const myBirthday = new Date(2001, 9, 27);
+  const age = Math.floor(
+    (createdAt!.getTime() - myBirthday.getTime()) / (1000 * 60 * 60 * 24 * 365)
+  );
+  if (showAge === true || (showAge === "auto" && age < 20)) {
+    dateStr += ` (Age ${age})`;
+  }
 
   const content = (
     <div
@@ -374,6 +317,8 @@ function ProjectCard({
           <Image
             className="flex-grow-0 w-12 h-12"
             src={logo.src}
+            width={logo.width}
+            height={logo.height}
             alt={logo.alt}
           />
         )}
@@ -404,13 +349,13 @@ function ProjectCard({
           </svg>
         )}
         <div className="flex-grow">
-          {date && (
+          {dateStr && (
             <div
               className={classNames("text-xs text-gray-600", {
                 "group-hover:text-indigo-900/70": !!href,
               })}
             >
-              {date}
+              {dateStr}
             </div>
           )}
           <h3 className="font-semibold text-lg">{title}</h3>
@@ -422,6 +367,8 @@ function ProjectCard({
             "group-hover:border-indigo-200": !!href,
           })}
           src={screenshot.src}
+          width={screenshot.width}
+          height={screenshot.height}
           alt={screenshot.alt}
         />
       )}
@@ -445,3 +392,81 @@ function ProjectCard({
     return <div className="group">{content}</div>;
   }
 }
+
+function ProjectCardFromGraphQL({
+  project: p,
+}: {
+  project: FragmentType<typeof projectFragment>;
+}) {
+  const project = useFragment(projectFragment, p);
+
+  return (
+    <ProjectCard
+      key={project!.sys.id}
+      title={project!.name!}
+      createdAt={project!.createdAt ? new Date(project!.createdAt) : undefined}
+      url={project!.projectUrl!}
+      logo={
+        project!.logo
+          ? {
+              src: project!.logo.url!,
+              width: project!.logo.width!,
+              height: project!.logo.height!,
+              alt: `${project!.name} Logo`,
+            }
+          : undefined
+      }
+      screenshot={
+        project!.coverImage
+          ? {
+              src: project!.coverImage.url!,
+              width: project!.coverImage.width!,
+              height: project!.coverImage.height!,
+              alt: `${project!.name} Screenshot`,
+            }
+          : undefined
+      }
+    >
+      {project!.shortDescription}
+    </ProjectCard>
+  );
+}
+
+const projectFragment = graphql(`
+  fragment ProjectFragment on Project {
+    sys {
+      id
+    }
+    name
+    createdAt
+    projectUrl
+    logo {
+      url
+      width
+      height
+    }
+    status
+    importance
+    coverImage {
+      url
+      width
+      height
+    }
+    shortDescription
+  }
+`);
+
+const projectsQuery = graphql(`
+  query GetProjects {
+    projectCollection(order: createdAt_DESC) {
+      items {
+        sys {
+          id
+        }
+        status
+        importance
+        ...ProjectFragment
+      }
+    }
+  }
+`);
