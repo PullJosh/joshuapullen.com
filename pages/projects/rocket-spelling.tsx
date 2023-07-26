@@ -1,8 +1,8 @@
 import Nav from "../../components/Nav";
 
 import Image from "next/image";
-import RocketSpellingLogo from "../../public/images/project-logos/rocket-spelling.svg";
-import RocketSpellingScreenshot from "../../public/images/projects/rocket-spelling/rocket-spelling-screenshot.jpg";
+// import RocketSpellingLogo from "../../public/images/project-logos/rocket-spelling.svg";
+// import RocketSpellingScreenshot from "../../public/images/projects/rocket-spelling/rocket-spelling-screenshot.jpg";
 import Link from "next/link";
 
 export default function RocketSpelling() {
@@ -16,11 +16,11 @@ export default function RocketSpelling() {
             <div className="col-span-3 prose">
               <div className="grid grid-cols-[auto,1fr] gap-x-4 items-center">
                 <div className="not-prose w-16 h-auto">
-                  <Image
+                  {/* <Image
                     className="w-full h-auto"
                     src={RocketSpellingLogo}
                     alt="Rocket Spelling Logo"
-                  />
+                  /> */}
                 </div>
                 <div>
                   <div className="text-gray-600 text-sm">
@@ -57,11 +57,11 @@ export default function RocketSpelling() {
                 rel="noreferrer"
                 passHref={true}
               >
-                <Image
+                {/* <Image
                   className="rounded-2xl shadow-lg hover:rotate-1 transition-transform"
                   src={RocketSpellingScreenshot}
                   alt="Rocket Spelling Screenshot"
-                />
+                /> */}
               </Link>
             </div>
           </div>
