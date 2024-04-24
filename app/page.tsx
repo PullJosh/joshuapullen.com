@@ -48,19 +48,9 @@ const socialLinks = [
     icon: "/images/social-icons/threads.svg",
   },
   {
-    name: "Twitter",
-    url: "https://twitter.com/PullJosh",
-    icon: "/images/social-icons/twitter.svg",
-  },
-  {
     name: "Dribbble",
     url: "https://dribbble.com/PullJosh",
     icon: "/images/social-icons/dribbble.svg",
-  },
-  {
-    name: "Discord",
-    url: "https://discord.com/users/217081065863380992",
-    icon: "/images/social-icons/discord.svg",
   },
   {
     name: "LinkedIn",
@@ -100,7 +90,7 @@ export default async function Index() {
               and <span className="text-green-400">technology</span>.
             </h2>
             <ul className="mt-4 -mx-2">
-              {socialLinks.map((link) => (
+              {socialLinks.map((link, i) => (
                 <li key={link.name} className="inline-block">
                   <a
                     href={link.url}
@@ -108,8 +98,15 @@ export default async function Index() {
                     target="_blank"
                     rel="noreferrer"
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      className="w-7 h-7 sm:w-8 sm:h-8 object-contain group-hover:brightness-200"
+                      className={classNames(
+                        "w-7 h-7 sm:w-8 sm:h-8 object-contain group-hover:brightness-200 group-hover:scale-110 transition-transform",
+                        {
+                          "group-hover:-rotate-6": i % 2 === 0,
+                          "group-hover:rotate-6": i % 2 === 1,
+                        }
+                      )}
                       src={link.icon}
                       alt={`${link.name} logo`}
                       title={link.name}
