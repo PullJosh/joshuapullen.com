@@ -22,7 +22,7 @@ export default function Nav({
       <div className="max-w-2xl px-8 py-6 mx-auto flex flex-col space-y-4 xxs:flex-row xxs:space-y-0 items-center justify-between">
         <Link
           href="/"
-          className="text-white text-xl font-medium"
+          className="text-white text-xl font-medium underline decoration-transparent hover:decoration-green-400 decoration-wavy decoration-2 pb-1 -mb-1 underline-offset-4 hover:scale-110 hover:-rotate-3 transition-all"
           passHref={true}
         >
           Josh Pullen
