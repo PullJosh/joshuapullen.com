@@ -43,9 +43,9 @@ const socialLinks = [
     icon: "/images/social-icons/youtube.svg",
   },
   {
-    name: "Threads",
-    url: "https://www.threads.net/@joshpullen27",
-    icon: "/images/social-icons/threads.svg",
+    name: "BlueSky",
+    url: "https://bsky.app/profile/pulljosh.bsky.social",
+    icon: "/images/social-icons/bluesky.svg",
   },
   {
     name: "Dribbble",
