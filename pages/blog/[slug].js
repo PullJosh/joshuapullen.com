@@ -58,8 +58,6 @@ export default function BlogPost({ slug, description, post }) {
           property="og:url"
           content={`https://joshuapullen.com/blog/${slug}`}
         />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:creator" content="PullJosh" />
       </Head>
 
       <article>

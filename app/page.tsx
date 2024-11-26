@@ -8,24 +8,6 @@ import Link from "next/link";
 
 import classNames from "classnames";
 
-import { cacheExchange, createClient, fetchExchange, gql } from "@urql/core";
-import { registerUrql } from "@urql/next/rsc";
-import { FragmentType, graphql, useFragment } from "../gql";
-
-const makeClient = () => {
-  return createClient({
-    url: process.env.CONTENTFUL_GRAPHQL_ENDPOINT!,
-    fetchOptions: () => ({
-      headers: {
-        authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-      },
-    }),
-    exchanges: [cacheExchange, fetchExchange],
-  });
-};
-
-const { getClient } = registerUrql(makeClient);
-
 const socialLinks = [
   {
     name: "Scratch",
@@ -59,11 +41,189 @@ const socialLinks = [
   },
 ];
 
+const projects = [
+  {
+    id: "3wHTNXzaWsC2N6O6TVKoJW",
+    __typename: "Project",
+    status: "in-progress",
+    importance: "normal",
+    name: "Mr. Pullen's Graphing Calculator",
+    createdAt: "Fall 2022",
+    projectUrl: "https://calculator.mrpullen.com/",
+    logo: null,
+    shortDescription:
+      "A 1D, 2D, and 3D graphing calculator that's great for artistic creation",
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/graphing-calculator.png",
+      width: 2180,
+      height: 1514,
+    },
+  },
+  {
+    id: "Eer2i2CctNPU7YjI3BU5H",
+    __typename: "Project",
+    status: "in-progress",
+    importance: "normal",
+    name: "Clown School",
+    createdAt: "Spring 2022",
+    projectUrl: "https://clown-school.mrpullen.com/",
+    shortDescription:
+      "Simple, interactive, visual explanations of core mathematical ideas",
+    logo: {
+      __typename: "Asset",
+      url: "/images/projects/logos/clown-school.png",
+      width: 160,
+      height: 160,
+    },
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/clown-school.jpg",
+      width: 1584,
+      height: 990,
+    },
+  },
+  {
+    id: "EWtvmk91XLdBnrI39pgDH",
+    __typename: "Project",
+    status: "completed",
+    importance: "important",
+    name: "3Blue1Brown.com",
+    createdAt: "Summer 2021 (Age 19)",
+    projectUrl: "https://www.3blue1brown.com/",
+    shortDescription:
+      "Interactive, online math lessons adapted from 3Blue1Brown's popular YouTube videos",
+    logo: {
+      __typename: "Asset",
+      url: "/images/projects/logos/3blue1brown.svg",
+      width: 1000,
+      height: 1000,
+    },
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/3blue1brown.jpg",
+      width: 2880,
+      height: 1640,
+    },
+  },
+  {
+    id: "3wcZs9zmkqJ0Hh3O9WmyE",
+    __typename: "Project",
+    status: "in-progress",
+    importance: "normal",
+    name: "Teacher Tools",
+    createdAt: "Spring 2021 (Age 19)",
+    projectUrl: "https://teacher-tools.joshuapullen.com/",
+    logo: null,
+    shortDescription: "Collection of useful utilities for teachers",
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/teacher-tools.jpg",
+      width: 2880,
+      height: 1642,
+    },
+  },
+  {
+    id: "6ebHg4gKnchLS8MX44NrVz",
+    __typename: "Project",
+    status: "completed",
+    importance: "important",
+    name: "Leopard",
+    createdAt: "Fall 2018 (Age 16)",
+    projectUrl: "https://leopardjs.com/",
+    shortDescription:
+      "Converts Scratch projects to human-readable JavaScript code automatically",
+    logo: {
+      __typename: "Asset",
+      url: "/images/projects/logos/leopard.svg",
+      width: 94,
+      height: 84,
+    },
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/leopard.png",
+      width: 750,
+      height: 278,
+    },
+  },
+  {
+    id: "5Vv5jNMkPWRrSeuKcpwvoa",
+    __typename: "Project",
+    status: "completed",
+    importance: "normal",
+    name: "Online Math League Website",
+    createdAt: "Summer 2018 (Age 16)",
+    projectUrl: null,
+    logo: null,
+    shortDescription:
+      "Website where Online Math League teams can submit and view their scores and take practice math tests",
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/online-math-league.jpg",
+      width: 2768,
+      height: 1332,
+    },
+  },
+  {
+    id: "7xwYCTc5q0QB53V3h727iT",
+    __typename: "Project",
+    status: "completed",
+    importance: "normal",
+    name: "Third Grade Math Games",
+    createdAt: "Winter 2017 (Age 16)",
+    projectUrl: "https://pulljosh.github.io/thirdgrademathgames/",
+    logo: null,
+    shortDescription: "A collection of math games for 3rd grade students",
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/third-grade-math-games.jpg",
+      width: 2064,
+      height: 1238,
+    },
+  },
+  {
+    id: "1mpNHrn5JQsdUOqS9t0r1s",
+    __typename: "Project",
+    status: "completed",
+    importance: "normal",
+    name: "Kids Technology Camps",
+    createdAt: "Summer 2016 (Age 14)",
+    projectUrl: null,
+    logo: null,
+    shortDescription:
+      "Scratch, web development, and robotics summer camps right here in Michigan",
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/tech-camps.jpg",
+      width: 3264,
+      height: 1836,
+    },
+  },
+  {
+    id: "6mBs6Jn93MB3Wp6vZ2NBzT",
+    __typename: "Project",
+    status: "completed",
+    importance: "important",
+    name: "Rocket Spelling",
+    createdAt: "Spring 2016 (Age 14)",
+    projectUrl: "https://www.rocketspelling.com/",
+    shortDescription: "An online spelling game for elementary students",
+    logo: {
+      __typename: "Asset",
+      url: "/images/projects/logos/rocket-spelling.svg",
+      width: 64,
+      height: 64,
+    },
+    coverImage: {
+      __typename: "Asset",
+      url: "/images/projects/cover-images/rocket-spelling.jpg",
+      width: 2880,
+      height: 1642,
+    },
+  },
+];
+
 export default async function Index() {
-  const result = await getClient().query(projectsQuery, {});
-
-  const projects = result.data?.projectCollection?.items ?? [];
-
   return (
     <>
       <Nav current="home" wavy={false} />
@@ -141,14 +301,11 @@ export default async function Index() {
             {projects
               .filter(
                 (project) =>
-                  project!.importance === "important" &&
-                  project!.status === "completed"
+                  project.importance === "important" &&
+                  project.status === "completed"
               )
               .map((project) => (
-                <ProjectCardFromGraphQL
-                  key={project!.sys.id}
-                  project={project!}
-                />
+                <ProjectCardFromGraphQL key={project.id} project={project} />
               ))}
           </div>
         </div>
@@ -170,12 +327,9 @@ export default async function Index() {
           <div className="mt-8 max-w-6xl px-8 mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
               {projects
-                .filter((project) => project!.status === "in-progress")
+                .filter((project) => project.status === "in-progress")
                 .map((project) => (
-                  <ProjectCardFromGraphQL
-                    key={project!.sys.id}
-                    project={project!}
-                  />
+                  <ProjectCardFromGraphQL key={project.id} project={project} />
                 ))}
             </div>
 
@@ -211,14 +365,11 @@ export default async function Index() {
             {projects
               .filter(
                 (project) =>
-                  project!.importance !== "important" &&
-                  project!.status === "completed"
+                  project.importance !== "important" &&
+                  project.status === "completed"
               )
               .map((project) => (
-                <ProjectCardFromGraphQL
-                  key={project!.sys.id}
-                  project={project!}
-                />
+                <ProjectCardFromGraphQL key={project.id} project={project} />
               ))}
           </div>
         </div>
@@ -231,8 +382,7 @@ export default async function Index() {
 
 interface ProjectCardProps {
   title: string;
-  createdAt?: Date;
-  showAge?: boolean | "auto";
+  createdAt: string;
   children: React.ReactNode;
   url?: string;
   infoUrl?: string;
@@ -255,30 +405,9 @@ interface ProjectCardProps {
   };
 }
 
-function dateSeason(date: Date) {
-  const month = date.getMonth();
-  const season = {
-    0: "Winter", // January
-    1: "Winter", // February
-    2: "Spring", // March
-    3: "Spring", // April
-    4: "Spring", // May
-    5: "Summer", // June
-    6: "Summer", // July
-    7: "Summer", // August
-    8: "Fall", // September
-    9: "Fall", // October
-    10: "Fall", // November
-    11: "Winter", // December
-  }[month];
-
-  return season;
-}
-
 function ProjectCard({
   title,
   createdAt,
-  showAge = "auto",
   children,
   url,
   infoUrl,
@@ -287,17 +416,6 @@ function ProjectCard({
 }: ProjectCardProps) {
   const href = infoUrl ?? url;
   const openInNewTab = !infoUrl;
-
-  let dateStr = `${dateSeason(createdAt!)} ${createdAt!.getFullYear()}`;
-
-  // How old I was when I made this project
-  const myBirthday = new Date(2001, 9, 27);
-  const age = Math.floor(
-    (createdAt!.getTime() - myBirthday.getTime()) / (1000 * 60 * 60 * 24 * 365)
-  );
-  if (showAge === true || (showAge === "auto" && age < 20)) {
-    dateStr += ` (Age ${age})`;
-  }
 
   const content = (
     <div
@@ -346,15 +464,13 @@ function ProjectCard({
           </svg>
         )}
         <div className="flex-grow">
-          {dateStr && (
-            <div
-              className={classNames("text-xs text-gray-600", {
-                "group-hover:text-indigo-900/70": !!href,
-              })}
-            >
-              {dateStr}
-            </div>
-          )}
+          <div
+            className={classNames("text-xs text-gray-600", {
+              "group-hover:text-indigo-900/70": !!href,
+            })}
+          >
+            {createdAt}
+          </div>
           <h3 className="font-semibold text-lg">{title}</h3>
         </div>
       </div>
@@ -391,79 +507,46 @@ function ProjectCard({
 }
 
 function ProjectCardFromGraphQL({
-  project: p,
+  project,
 }: {
-  project: FragmentType<typeof projectFragment>;
+  project: {
+    id: string;
+    name: string;
+    createdAt: string;
+    projectUrl: string | null;
+    logo: { url: string; width: number; height: number } | null;
+    coverImage: { url: string; width: number; height: number };
+    shortDescription: string;
+  };
 }) {
-  const project = useFragment(projectFragment, p);
-
   return (
     <ProjectCard
-      key={project!.sys.id}
-      title={project!.name!}
-      createdAt={project!.createdAt ? new Date(project!.createdAt) : undefined}
-      url={project!.projectUrl!}
+      key={project.id}
+      title={project.name}
+      createdAt={project.createdAt}
+      url={project.projectUrl ?? undefined}
       logo={
-        project!.logo
+        project.logo
           ? {
-              src: project!.logo.url!,
-              width: project!.logo.width!,
-              height: project!.logo.height!,
-              alt: `${project!.name} Logo`,
+              src: project.logo.url,
+              width: project.logo.width,
+              height: project.logo.height,
+              alt: `${project.name} Logo`,
             }
           : undefined
       }
       screenshot={
-        project!.coverImage
+        project.coverImage
           ? {
-              src: project!.coverImage.url!,
-              width: project!.coverImage.width!,
-              height: project!.coverImage.height!,
-              alt: `${project!.name} Screenshot`,
+              src: project.coverImage.url,
+              width: project.coverImage.width,
+              height: project.coverImage.height,
+              alt: `${project.name} Screenshot`,
             }
           : undefined
       }
     >
-      {project!.shortDescription}
+      {project.shortDescription}
     </ProjectCard>
   );
 }
-
-const projectFragment = graphql(`
-  fragment ProjectFragment on Project {
-    sys {
-      id
-    }
-    name
-    createdAt
-    projectUrl
-    logo {
-      url
-      width
-      height
-    }
-    status
-    importance
-    coverImage {
-      url
-      width
-      height
-    }
-    shortDescription
-  }
-`);
-
-const projectsQuery = graphql(`
-  query GetProjects {
-    projectCollection(order: createdAt_DESC) {
-      items {
-        sys {
-          id
-        }
-        status
-        importance
-        ...ProjectFragment
-      }
-    }
-  }
-`);

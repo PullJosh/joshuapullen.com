@@ -9,15 +9,6 @@ const nextConfig = {
       },
     ];
   },
-  images: {
-    remotePatterns: [
-      // Match Contentful hosted images
-      {
-        hostname: "images.ctfassets.net",
-        protocol: "https",
-      },
-    ],
-  },
 };
 
 module.exports = nextConfig;
