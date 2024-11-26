@@ -44,7 +44,7 @@ const socialLinks = [
   },
   {
     name: "BlueSky",
-    url: "https://bsky.app/profile/pulljosh.bsky.social",
+    url: "https://bsky.app/profile/pulljosh.com",
     icon: "/images/social-icons/bluesky.svg",
   },
   {
