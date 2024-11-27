@@ -1,0 +1,33 @@
+---
+import Wave from "./Wave.astro";
+import NavLink from "./NavLink.astro";
+
+interface Props {
+  current: string;
+  wavy?: boolean;
+  waveClassName?: string;
+}
+
+const { current, wavy = true, waveClassName = undefined } = Astro.props;
+---
+
+<header
+  class:list={["bg-indigo-600 relative overflow-hidden", { "pb-3": wavy }]}
+>
+  <div
+    class="max-w-2xl px-8 py-6 mx-auto flex flex-col space-y-4 xxs:flex-row xxs:space-y-0 items-center justify-between"
+  >
+    <a
+      href="/"
+      class="text-white text-xl font-medium underline decoration-transparent hover:decoration-green-400 decoration-wavy decoration-2 pb-1 -mb-1 underline-offset-4 hover:scale-110 hover:-rotate-3 transition-all"
+    >
+      Josh Pullen
+    </a>
+
+    <nav class="flex items-center space-x-4">
+      <NavLink href="/" selected={current === "home"}>Home</NavLink>
+      <NavLink href="/blog" selected={current === "blog"}>Blog</NavLink>
+    </nav>
+  </div>
+  {wavy && <Wave className={waveClassName} />}
+</header>

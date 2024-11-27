@@ -1,0 +1,18 @@
+---
+interface Props {
+  href: string;
+  selected?: boolean;
+}
+
+const { href, selected = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "text-white px-4 py-2 rounded-lg",
+    { "hover:bg-indigo-700": !selected, "bg-indigo-800": selected },
+  ]}
+>
+  <slot />
+</a>

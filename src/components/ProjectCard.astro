@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  createdAt: string;
+  url?: string;
+  infoUrl?: string;
+  logo?: ImageMetadata;
+  coverImage?: ImageMetadata;
+  loading?: "lazy" | "eager";
+}
+
+const {
+  title,
+  createdAt,
+  url,
+  infoUrl,
+  logo,
+  coverImage,
+  loading = "lazy",
+} = Astro.props;
+
+const href = infoUrl ?? url;
+const openInNewTab = !infoUrl;
+
+const Component = href ? "a" : "div";
+---
+
+<Component
+  class="group block"
+  href={href}
+  target={openInNewTab ? "_blank" : undefined}
+  rel={openInNewTab ? "noreferrer" : undefined}
+>
+  <div
+    class:list={[
+      "flex flex-col p-4 gap-y-4 border rounded-lg text-base text-black",
+      {
+        "group-hover:bg-indigo-100 group-hover:border-indigo-200 group-hover:text-indigo-900 group-hover:group-even:rotate-2 group-hover:group-odd:-rotate-2 group-hover:scale-105 transition-all":
+          !!href,
+      },
+    ]}
+  >
+    <div class="flex space-x-4 items-center">
+      {
+        logo && (
+          <Image
+            class="flex-grow-0 w-12 h-12"
+            src={logo}
+            alt={`${title} logo`}
+            loading={loading}
+          />
+        )
+      }
+      <div class="flex-grow">
+        <div
+          class:list={[
+            "text-xs text-gray-600",
+            { "group-hover:text-indigo-900/70": !!href },
+          ]}
+        >
+          {createdAt}
+        </div>
+        <h3 class="font-semibold text-lg">{title}</h3>
+      </div>
+    </div>
+    {
+      coverImage && (
+        <Image
+          class:list={[
+            "rounded-lg border",
+            { "group-hover:border-indigo-200": !!href },
+          ]}
+          src={coverImage}
+          alt={`${title} screenshot`}
+          loading={loading}
+        />
+      )
+    }
+    <div><slot /></div>
+  </div>
+</Component>

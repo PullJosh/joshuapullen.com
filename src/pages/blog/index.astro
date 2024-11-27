@@ -1,0 +1,94 @@
+---
+import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Nav from "../../components/Nav.astro";
+
+const posts = await getCollection("blog");
+
+const groupBy = <T,>(
+  list: T[],
+  keyGetter: (item: T) => string
+): { [key: string]: T[] } => {
+  const groups: { [key: string]: T[] } = {};
+  list.forEach((item) => {
+    const key = keyGetter(item);
+    const collection = groups[key];
+    if (!collection) {
+      groups[key] = [item];
+    } else {
+      collection.push(item);
+    }
+  });
+  return groups;
+};
+---
+
+<html lang="en">
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="description" content="Thoughts on education and technology." />
+  <title>Blog | Josh Pullen</title>
+
+  <body>
+    <div class="flex flex-col items-stretch min-h-screen">
+      <Nav current="blog" />
+      <main class="w-full max-w-2xl lg:max-w-3xl px-8 mx-auto my-16">
+        <h1 class="text-2xl font-bold text-gray-900">Josh Pullen's Blog</h1>
+        <div>
+          {
+            Object.entries(
+              groupBy(posts, (post) =>
+                String(new Date(post.data.date).getFullYear())
+              )
+            )
+              .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+              .map(([year, posts]) => {
+                posts = posts.sort(
+                  (a, b) =>
+                    new Date(b.data.date).getTime() -
+                    new Date(a.data.date).getTime()
+                );
+
+                return (
+                  <>
+                    <h2 class="text-xl text-gray-500 font-bold mt-8 mb-2 pb-1 border-b-2">
+                      {year}
+                    </h2>
+                    <div class="grid sm:grid-cols-[auto,1fr] gap-x-4 sm:gap-y-2 items-baseline">
+                      {posts.map((post) => (
+                        <>
+                          <time
+                            class="text-gray-700 sm:w-[5rem] sm:text-right text-xs sm:text-sm"
+                            datetime={new Date(post.data.date).toISOString()}
+                          >
+                            {new Date(post.data.date).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "long",
+                                day: "numeric",
+                              }
+                            )}
+                          </time>
+                          <a
+                            href={`/blog/${post.slug}`}
+                            class="hover:underline block mb-4 sm:mb-0"
+                          >
+                            <h3 class="font-semibold text-gray-900">
+                              {post.data.title}
+                            </h3>
+                          </a>
+                        </>
+                      ))}
+                    </div>
+                  </>
+                );
+              })
+          }
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

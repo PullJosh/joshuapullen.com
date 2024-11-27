@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection("blog");
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<html lang="en">
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="description" content="Thoughts on education and technology." />
+  <meta property="og:title" content={post.data.title} />
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:url"
+    content={`https://joshuapullen.com/blog/${post.slug}`}
+  />
+  <title>{post.data.title} | Blog | Josh Pullen</title>
+
+  <body>
+    <div class="flex flex-col items-stretch min-h-screen">
+      <Nav current="blog" />
+
+      <main class="w-full max-w-2xl lg:max-w-3xl px-8 mx-auto my-16">
+        <a href="/blog" class="block text-indigo-700 hover:underline mb-6"
+          >← Josh Pullen's Blog</a
+        >
+
+        <article>
+          <time
+            class="text-gray-700 sm:text-xl"
+            datetime={new Date(post.data.date).toISOString()}
+          >
+            {
+              new Date(post.data.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }
+          </time>
+          <h1
+            class="mb-6 mt-2 text-2xl sm:text-4xl font-bold leading-tight text-gray-900"
+          >
+            {post.data.title}
+          </h1>
+          <div
+            class="prose max-w-full prose-indigo sm:prose-lg prose-headings:text-base prose-headings:font-semibold prose-h1:text-xl sm:prose-h1:text-3xl prose-h2:text-lg sm:prose-h2:text-xl"
+          >
+            <Content />
+          </div>
+        </article>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>
