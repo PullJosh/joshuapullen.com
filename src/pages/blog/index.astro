@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
+import InlineEmailSignupForm from "../../components/InlineEmailSignupForm.astro";
 
 const posts = await getCollection("blog");
 
@@ -44,7 +45,7 @@ const groupBy = <T,>(
               )
             )
               .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
-              .map(([year, posts]) => {
+              .map(([year, posts], index) => {
                 posts = posts.sort(
                   (a, b) =>
                     new Date(b.data.date).getTime() -
@@ -82,6 +83,13 @@ const groupBy = <T,>(
                         </>
                       ))}
                     </div>
+
+                    {/* Add email signup form after the first year */}
+                    {index === 0 && (
+                      <div class="mt-8">
+                        <InlineEmailSignupForm />
+                      </div>
+                    )}
                   </>
                 );
               })
