@@ -1,5 +1,5 @@
 <form
-  class="bg-gray-100 border py-4 pl-5 pr-4 rounded-2xl flex space-x-4"
+  class="bg-gray-100 border py-4 pl-5 pr-4 rounded-2xl flex space-y-4 sm:space-x-4 sm:space-y-0 flex-col sm:flex-row"
   action="https://app.kit.com/forms/7835920/subscriptions"
   method="post"
   data-sv-form="7835920"
@@ -14,11 +14,13 @@
       Sign up for email updates every time I publish. Unsubscribe any time.
     </p>
   </div>
-  <div class="flex space-x-2 self-center">
+  <div
+    class="flex flex-col space-y-2 xs:flex-row xs:space-x-2 xs:space-y-0 sm:self-center"
+  >
     <label class="flex-1 flex flex-col">
       <span class="font-medium">Email:</span>
       <input
-        class="bg-white border px-4 py-2 rounded-md flex-1"
+        class="bg-white border px-4 py-2 rounded-md flex-1 w-full"
         name="email_address"
         aria-label="Email Address"
         placeholder="Email Address"
@@ -26,8 +28,8 @@
         required
       />
     </label>
-    <div class="flex-initial flex flex-col">
-      <span class="font-medium">&nbsp;</span>
+    <div class="flex-initial flex-col flex">
+      <span class="font-medium hidden xs:block">&nbsp;</span>
       <button
         type="submit"
         class="bg-yellow-400 text-yellow-950 px-6 py-2 rounded-md flex-1 hover:bg-yellow-300 active:bg-yellow-500 transition-colors"
