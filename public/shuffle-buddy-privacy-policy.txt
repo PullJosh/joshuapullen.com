@@ -1,0 +1,1 @@
+Shuffle Buddy does not collect any personally identifiable information from its users. All seating chart data is stored locally; nothing ever leaves your device.
