@@ -4,9 +4,15 @@
   async
   src="https://www.googletagmanager.com/gtag/js?id=G-LT077E2C99"></script>
 <script>
+  declare global {
+    interface Window {
+      dataLayer: unknown[];
+    }
+  }
+
   window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
+  function gtag(...args: unknown[]) {
+    window.dataLayer.push(arguments);
   }
   gtag("js", new Date());
   gtag("config", "G-LT077E2C99");
