@@ -29,6 +29,7 @@ import coverRocketSpelling from "../images/projects/cover-images/rocket-spelling
 import coverTeacherTools from "../images/projects/cover-images/teacher-tools.jpg";
 import coverTechCamps from "../images/projects/cover-images/tech-camps.jpg";
 import coverThirdGradeMathGames from "../images/projects/cover-images/third-grade-math-games.jpg";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 
 const socialLinks = [
   {
@@ -65,11 +66,14 @@ const socialLinks = [
 ---
 
 <html lang="en">
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width" />
-  <meta name="generator" content={Astro.generator} />
-  <title>Josh Pullen</title>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Josh Pullen</title>
+    <GoogleAnalytics />
+  </head>
 
   <body>
     <Nav current="home" wavy={false} />

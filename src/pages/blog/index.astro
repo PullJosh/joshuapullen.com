@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Footer from "../../components/Footer.astro";
 import Nav from "../../components/Nav.astro";
 import InlineEmailSignupForm from "../../components/InlineEmailSignupForm.astro";
+import GoogleAnalytics from "../../components/GoogleAnalytics.astro";
 
 const posts = await getCollection("blog");
 
@@ -25,13 +26,15 @@ const groupBy = <T,>(
 ---
 
 <html lang="en">
-  <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width" />
-  <meta name="generator" content={Astro.generator} />
-  <meta name="description" content="Thoughts on education and technology." />
-  <title>Blog | Josh Pullen</title>
-
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Thoughts on education and technology." />
+    <title>Blog | Josh Pullen</title>
+    <GoogleAnalytics />
+  </head>
   <body>
     <div class="flex flex-col items-stretch min-h-screen">
       <Nav current="blog" />
