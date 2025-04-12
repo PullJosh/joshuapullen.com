@@ -1,0 +1,63 @@
+---
+date: 2025-04-12 23:00:00
+title: "Four Reasons I Finally Shipped a Product"
+author: "Josh Pullen"
+---
+
+**I am alergic to shipping.** Very few of my projects ever have real users, because they rarely see the light of day. That's why, when I actually published a new product, I wanted to know what made this time different.
+
+Here are four factors that I believe contributed to shipping [Shuffle Buddy](https://chromewebstore.google.com/detail/shuffle-buddy/fphpbffibhlafgbmaioaokkbplodneam):
+
+# 1. It was a small project with limited scope.
+
+The [Ninety–ninety rule](https://en.wikipedia.org/wiki/Ninety%E2%80%93ninety_rule) states:
+
+> The first 90 percent of the code accounts for the first 90 percent of the development time. The remaining 10 percent of the code accounts for the other 90 percent of the development time.
+
+In my experience, this was absolutely true. I set out to create a tool that accomplished an impossibly small task: given a list of students, generate a random seating chart. Doing this well involved replicating the Google Sheets spreadsheet editor for name entry, designing a visual room layout editor, and wiring everything together, which is always more complicated than it seems.
+
+If I had set out to build anything that wasn't obnoxiously small in scope, I would never have gotten it done at all.
+
+{% inlineEmailSignupForm /%}
+
+# 2. I had a deadline.
+
+Shuffle Buddy is a tool for teachers. I wanted to [get feedback](/blog/you-dont-know-your-users-until-you-watch-them) from teachers at the [Knowles Teaching Fellowship](https://knowlesteachers.org/) spring conference. This gave me a hard deadline. I needed to publish my extension before getting on the plane to Philly.
+
+In the months before the deadline, I made consistent progress building my extension, but the scope kept slowly increasing. To improve the user experience, I needed to build a spreadsheet editor for entering names. I needed to add easy importing, copy and paste, and an ever-increasing pile of little details.
+
+One week before the conference, I realized I just needed to ship something.
+
+Parts of the UI were left as `prompt()` and `alert()` boxes instead of proper interface elements. There were 14 design flaws that I thought would trip up users (although it turns out I was [almost completely wrong](/blog/you-dont-know-your-users-until-you-watch-them)). There were ugly corners I wasn't proud of. But I shipped it anyway. And, for the most part, users didn't care.
+
+# 3. I started with a prototype for myself.
+
+This seating chart generator was originally built for _only me_. I began by creating a simple Codepen that could generate seating charts for my classroom with the click of a button.
+
+In my prototype...
+
+- The layout of my classroom was hard-coded
+- The student rosters were hard-coded
+- The student placement rules were hard-coded
+- There were zero settings
+- The placement algorithm was so unoptimized it nearly crashed my work computer every time I ran it
+
+But it worked! I used this prototype for weeks.
+
+**While desigining my prototype, I learned which features were important and which were not.** I was often surprised by which features I actually wanted once I started using it. Experiencing the product from a user perspective strongly steered my choices. I surprised myself with many of my own preferences.
+
+It's easy to pour a ton of time into perfecting a feature that shouldn't exist, but the prototype helped me avoid that.
+
+**When I shared the prototype with other teachers, they wanted it for themselves.** Other teachers couldn't actually use it, of course, because everything about my students and classroom was hard-coded. But the strong positive feedback told me that it would be worth my time to develop a new version that would be usable by everyone.
+
+# 4. I was held accountable.
+
+I am frequently attracted to shiny new things. Thanks to a culprit podcast episode, there was a week when I got excited about design systems. I wanted to create a shared design language for all (zero) of my new edtech products.
+
+I told my wonderful girlfriend Jessika about this. She did not share my enthusiasm.
+
+> This is how it happens. This is why you never get anything done.
+
+Her lack of shared excitement was–despite all appearances–the most supportive thing she could have possibly said. Immediately, I saw what she saw and knew that she was correct. If I wanted to ship this product, I needed to _just do it_.
+
+And I did.
