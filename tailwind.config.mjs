@@ -1,4 +1,6 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+import * as defaultTheme from "tailwindcss/defaultTheme";
+
+import typography from "@tailwindcss/typography";
 
 const round = (num) =>
   num
@@ -8,7 +10,7 @@ const round = (num) =>
 const rem = (px) => `${round(px / 16)}rem`;
 const em = (px, base) => `${round(px / base)}em`;
 
-module.exports = {
+export default {
   mode: "jit",
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -44,5 +46,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [typography],
 };
