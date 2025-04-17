@@ -7,7 +7,7 @@ export default defineMarkdocConfig({
       attributes: {},
     },
     youtube: {
-      render: component("./src/components/YoutubeEmbed.astro"),
+      render: component("./src/components/YouTubeEmbed.astro"),
       attributes: {
         videoId: {
           type: String,
