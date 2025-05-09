@@ -1,0 +1,193 @@
+---
+date: 2025-05-04 23:00:00
+title: Saving Teachers Time with Modular Assignments (Design Proposal)
+author: "Josh Pullen"
+---
+
+I love the freedom to create custom assignments for my students, but it’s also a lot of work. As a first-year teacher, designing _a day_ every day is not easy. Teachers should be able to create customized assignments with less effort.
+
+**I have a proposal for how we can radically reduce the administrative work that teachers need to perform when creating (or Frankensteining) assignments.** I think one new piece of software—plus a community built around it—could reduce the workload for everyone.
+
+All it takes is to think in composable pieces.
+
+# Two Kinds of Assignments
+
+Some of the best assignments are projects and rich tasks. When students are given a rich task to engage in, they make connections between concepts, engage in creative problem solving, and developing and understanding of “why”, not just “how”.
+
+Not every assignment, however, is a project or a rich task. Lots of assignments are composed primarily of the basic unit of learning: questions.
+
+A good collection of questions, with a bit of surrounding context, can serve as a new lesson, a practice assignment, or an assessment like a quiz or test.
+
+Unlike the artisanal nature of the project/rich task, where the _form_ of the assignment is integrated tightly with its _content_, question collections are much more modular.
+
+The same question (or set of questions) that makes sense on an introductory lesson might also make sense on a practice sheet or assessment.
+
+And if you’re looking for questions, you can find them everywhere:
+
+- Textbooks and other curriculum materials (including free curricula available online)
+- In a shared drive from a colleague
+- The College Board
+- PDFs online
+- Khan Academy/IXL/etc practice levels
+- Assignments for sale on Teachers Pay Teachers
+
+The list goes on. Unfortunately, once you find some questions to use (or create your own), you need to shape them into a cohesive assignment, and that work is mostly just a lot of pointless overhead.
+
+We need easy-to-fill templates.
+
+{% inlineEmailSignupForm /%}
+
+# The Solution: Easy-to-fill Assignment Templates
+
+“Templates” are pretty broad:
+
+- Worksheet with practice problems
+- Paper quiz or test
+- PowerPoint Jeopardy game
+- Kahoot/Blooket/Quizizz/etc set
+- Google Form quiz
+- Maze worksheet
+- Practice stations with answer key available for each question
+- Around-the-world stations (each station has one question, and you use your answer to find the next station)
+- Khan Academy-style online practice
+- And many, many more
+
+**In an ideal world, teachers could easily slot questions into templates without having to worry about formatting, numbering, or any other non-essential work.** Additionally, for many problem types, it makes sense to have a **large question bank** available to pull from. Better yet, some kinds of questions are easy to **generate infinite variations** of.
+
+As a teacher, I should be able to choose problems from a bank or generator, select a template, and be done. In cases where I need more customization, I should be able to manually edit pre-made questions, write my own questions from scratch, or even create my own problem generator. I should be able to adjust the setting and content of the template to design my own context around the questions. I should also be able to contribute my questions and generators back to the community.
+
+This way of working unlocks tons of opportunities:
+
+- A curriculum could provide banks of questions that teachers can use to remix their own assignments
+- Quizzes and tests could be regenerated in one click with new questions of the same type, to create alternate versions for retakes or cheating prevention
+- Teachers would never have to rewrite questions just because they’re changing activity formats
+- Teachers could easily generate paper versions of online assignments for students who need accommodations or who lack internet access
+- Every assignment would get a generated answer key with zero extra work. The key would always be kept in sync with the assignment when changes are made
+
+## Representing Questions
+
+To enable this vision, we need a way to represent questions that is abstract enough to be usable with _any_ template type. We don’t want the way we store questions to be overly attached to specific formatting, because the question will show up differently in different templates.\
+What follows is an exploration of how we could design this abstract question representation.
+
+---
+
+## Types of Answer Inputs
+
+Typically—but not always—questions have a distinct question and answer. In these cases, the question is pretty much just multimedia. It could have text, images, equations, tables, graphs, videos, etc. For now, imagine that when writing the question you have a Notion-style block based editor to work with. We’ll refine this idea later, but for now let’s discuss answer inputs.
+
+Let’s go from easiest to most complicated.
+
+**True/False:** Implementing a True/False input is easy. There are two options, and they are the same for every question.
+
+**Multiple Choice:** Slightly more advanced is multiple choice, where the number of options and the content of those options can change. For multiple choice questions, the author must be able to specify any number of options (two or more) and should be able to write the content of those answer choices. Often, the choices are plain text, but not always. Sometimes the choices involve math equations, and sometimes even multimedia. You might have to choose the correct table, graph, photo, etc. I think it makes sense to provide the same rich multimedia editor we use for the question to write the answer choices.
+
+**Multi-Select:** Another variation of multiple choice is multi-select. The only difference here is that students are allowed to choose multiple options, which they might need to do to get the correct answer. From a question authoring perspective, not much is different.\
+Next, we reach the free inputs. Instead of providing answer choices, students must enter their own.
+
+**Matching:** A third multiple choice variation is matching, where two sets of items must be paired up. A matching section of an assignment could be considered as one large question or as a set of individual questions that happen to be connected. It’s a gray area. The answer choices on each side of the matching should be allowed to contain rich multimedia in addition to plain text.
+
+The simplest way for students to input their answers is by selecting a letter answer for each choice. However, drawing connecting lines is another common approach.
+
+**Free Response Area:** The most relaxed option is just a big blank space for students to work in. This is like an AP free response question, where students show their work and give an answer all in one blank space. Their solution might include math work, diagrams, or a number answer—ideally circled for visibility. This is great for when the student is responsible for structuring their own work and answer.
+
+**Written Response Area:** Another free-form option is a large space to write. This limits the multimedia possibilities, restricting students to writing words. This is good for a short essay or other written response. On paper, this might appear as a lined writing space. On a computer, it could look like a text input to type in.
+
+**Math Input:** For math problems specifically, a math entry input might be needed. By “math entry”, I mean that there is space for the student to write an expression, equation, coordinate pair, fraction, decimal, units, etc. On a printed assignment, this just looks like a blank space to write an answer. But on the computer, it’s more complicated. Students need the ability to type math, and it needs to be simple to use. In practice, this can be challenging—but not impossible—to implement.
+
+**Short Answer Blank:** There can also be the need for a non-math short answer input, where students are expected to enter a word or phrase. On paper, this might look identical to the math input (just a small blank space to write), but on the computer, it would be more like a regular text input without the math features.
+
+## Integrated Answers
+
+The question content and answer input are not always so easily separated.
+
+The most obvious example is fill-in-the-blank questions, where a sentence or paragraph has blanks that the student needs to fill in. In this case, the answer inputs are integrated into the question.
+
+Many of our previous answer types can be integrated inline into text:
+
+- Multiple Choice: On paper, students might need to circle the correct choice. On a computer, it could be a dropdown menu embedded into the text.
+- Multi-Select: Similarly, students can circle all the correct choices or choose many from a dropdown menu.
+- Math Input: Students can type math into an inline input.
+- Short Answer Blank: Students can fill in the blank in a sentence or paragraph.
+
+These inline answers can also make sense to put inline in a table cell or superimposed as labels over a picture or graph.
+
+It can also make sense to have math with blanks inside. For example, you might provide a coordinate pair with one coordinate already filled in and a blank for the other, like (__, 5).
+
+There are also some special cases where students can embed their own work into a question. For example, plotting on a graph. Students might want to add their own points, lines, functions, curves, geometric figures, etc. to a provided graph. Sometimes the provided graph should already have a fixed viewport with labeled axes. Other times, students should choose their own coordinates.
+
+It is worth noting that when answer inputs are integrated into the question, it makes sense to allow multiple answers in one problem. This is distinct from the separated question-answer paradigm in which one question calls for one answer.
+
+## Related Question Sets
+
+Sometimes a group of questions belongs together.
+
+One reason questions belong together is because they all refer to the same shared resource(s). For example, a set of math questions might all refer to the same graph. A set of English-class multiple choice questions might all refer to the same passage of a book. It may not make sense to duplicate the resource for every question, so instead all of the questions might refer to one place where the resource exists.
+
+Like a shared resource, questions can also share a common set of instructions. This might be one sentence (“For each question, select the choice that is most reasonable”) or more involved.
+
+Finally, the answers to different questions are sometimes interrelated. For example, the matching question type listed above could be considered as a set of related questions (or it could be considered as one). Or a question might ask students to build on their previous answer. For example, a set of questions might include one question that asks students to write an equation and then another that asks them to evaluate their equation for a particular input.
+
+## Answer Keys & Answer Checking
+
+For a paper assignment, it is extremely helpful to have an answer key. Sometimes the key (or part of the key) is provided to students to check their own work. Other times, it is used only by the teacher.
+
+On a computer assignment, an answer key can still be helpful, but the computer can also check answers automatically and sometimes provide feedback. (Computer-driven feedback is currently a mixed bag. In some cases it works great; in many cases it doesn’t.)
+
+For this reason, it makes sense to have an answer key that people can read and that computers can use to check solutions.
+
+It also makes sense to provide students with feedback. The most basic form of feedback, which is not very personalized, is just to show a correct solution with the work or reasoning provided. Instead of taking the student’s work as input, this just shows someone else’s thinking, and the student can try to learn from that.
+
+A more personalized form of feedback is when a human teacher looks at a student’s work and annotates it or has a discussion with the student. This could take the form of statements of correction (“this is wrong” or “do this instead”), or—perhaps pedagogically better—questions about the work that lead the student in a useful direction.
+
+For our purposes, this creates two useful answer key resources we can provide for each question:
+
+- The correct answer
+- The work or thought process that leads to the correct answer
+
+We cannot provide feedback as part of the assignment, because feedback depends on the student work.
+
+### Wrench #1: Multiple Correct Answers
+
+But wait! Not all questions have one correct answer. We need to expand our view of answer keys accordingly.\
+Some questions have multiple correct answers. In math, sometimes there are multiple equivalent expressions that mean the same thing. As a simple example, one student might enter 1/2 while another enters 0.5. In many cases, both should be considered correct (as should 2/4, 0.50, etc.) In other cases, like the question “simplify the fraction 3/6”, some forms are correct but others are not.
+
+There can also be questions that are much more open and ask students to share their thinking, in which the thought _process_ can be evaluated as strong or weak regardless of the final answer or conclusion. An example of this would be a short essay question in which students must construct an argument in favor of one option or another.
+
+With the knowledge that some questions have multiple correct answers, we can expand our above list of answer key resources that can be provided:
+
+- A description of which kinds of answers are correct. This could take the form of a rubric, a list of every possible correct answer, a mathematical condition to check, or even code that checks an answer.
+- One or more examples of correct answers that the student could have provided. This list may or may not be exhaustive.
+- One or more examples of student work/thinking that leads to a correct answer.
+
+Again, personalized feedback to students cannot be provided as part of the assignment and must instead be provided by a teacher. (Or maybe some kind of AI-provided feedback—which I am skeptical of in general but certainly open to in limited cases.)
+
+### Wrench #2: Questions that depend on your previous answer
+
+Yes, another monkey wrench. We previously pointed out that some questions belong together in a set because one of the questions asks you to build on your answer to a previous question. The example we gave before was one question that asks the student to write an equation for a function and a follow-up question that asks them to evaluate their function for a particular value of x.
+
+In these cases, there are two noteworthy possibilities:
+
+1. The first question is answered incorrectly, and the follow-up question is answered correctly _based on that incorrect work_.
+1. The first question is answered incorrectly, and the follow-up question is answered correctly _as if the prior answer was correct_. This can happen if, for example, the student doesn’t actually use the equation they wrote and instead evaluates the input based on their knowledge of the original situation.
+
+And of course, it’s possible that there are multiple correct solutions to the first problem, and we could get a situation like #1 where the second answer depends on the first even if the first answer isn’t wrong.
+
+For the purpose of an answer key, this opens up some new possibilities.
+
+On a paper assignment, the answer key must be static. It cannot adapt based on the student’s work. This means that the examples of correct answers and correct work don’t change—we just provide the correct work and let the student figure it out based on that.
+
+However, we still have to think about the description of which kinds of answers are correct. It is not possible to provide a complete list of possible correct answers if the correct answers change based on student work. If the first question only has one correct answer, we can still provide a list of correct answers _assuming the prior answer was correct_, but not one that adapts. If the first answer has many possible correct answers, listing out all the possibilities rapidly becomes impractical.
+
+The other way to describe correct answers was through a rubric or mathematical condition. These still make sense, as the conditions for correctness can simply refer back to the previous answer. Doing the grading by hand in these cases is mentally draining but not impossible.
+
+If the assignment is on the computer, we have more options. Examples of correct answers and correct work can be generated based on a correct first answer or on the student’s actual first answer. Any rubric, list of correct answers, mathematical condition, or answer-checking code can be adapted to the prior answer.
+
+It is up to the teacher how to assign points for correct work based on a wrong answer, but with the answer key materials described above, we’ve provided everything we can.
+
+# Next Steps
+
+What I’ve laid out here is an initial sketch of a format for storing and manipulating questions separate from the assignment template they are embedded within.
+
+This initial outline is based on my own ideas from the assignments I work with every day. But I believe that any kind of protocol or standard should be specialized to the needs of its users, so a reasonable next step would be to do some research on the kinds of assignments that people are giving to their students. If a type of question appears that is not representable, maybe it needs to be added to the list.
+
+After that would be to build a prototype of a question bank & lesson template system, which I plan to try this summer.
