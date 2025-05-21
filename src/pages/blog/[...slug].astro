@@ -15,6 +15,9 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const description =
+  post.data.description || "Thoughts on education and technology.";
 ---
 
 <html lang="en">
@@ -23,9 +26,10 @@ const { Content } = await post.render();
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Thoughts on education and technology." />
+    <meta name="description" content={description} />
     <meta property="og:title" content={post.data.title} />
     <meta property="og:type" content="article" />
+    <meta name="og:description" content={description} />
     <meta
       property="og:url"
       content={`https://joshuapullen.com/blog/${post.slug}`}

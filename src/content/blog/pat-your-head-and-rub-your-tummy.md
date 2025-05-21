@@ -2,6 +2,7 @@
 date: 2025-05-20 17:00:00
 title: "Pat Your Head and Rub Your Tummy"
 author: "Josh Pullen"
+description: "Teachers are always multitasking. We need to build tools that support them."
 ---
 
 A few weeks ago, I had the opportunity to visit sixteen classrooms and make observations. It's a professional development opportunity, called "instructional rounds," offered by my school.
