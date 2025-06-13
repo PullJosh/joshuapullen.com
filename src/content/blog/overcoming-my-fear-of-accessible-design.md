@@ -1,6 +1,6 @@
 ---
 date: 2025-06-13 6:00:00
-title: "Overcoming My Fear of Accessibile Design"
+title: "Overcoming My Fear of Accessible Design"
 author: "Josh Pullen"
 ---
 
