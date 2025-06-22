@@ -2,6 +2,7 @@
 date: 2025-06-22 23:00:00
 title: Dandelion Ideas
 author: Josh Pullen
+description: Some ideas don’t gain traction because they are invisible. Dandelion ideas come to life when you give them a name.
 ---
 
 Some ideas don't gain traction because they are invisible. Lurking in the shadows, these ideas might be discussed, but they are never made concrete. They are difficult to grasp onto, so they are not built upon. I call these **dandelion ideas**.
