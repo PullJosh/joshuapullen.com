@@ -37,6 +37,14 @@ const description =
     <meta property="og:image" content={`/open-graph/${post.slug}.png`} />
     <title>{post.data.title} | Blog | Josh Pullen</title>
     <GoogleAnalytics />
+    {
+      post.data.hasMath && (
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+        />
+      )
+    }
   </head>
 
   <body>
@@ -67,7 +75,7 @@ const description =
             {post.data.title}
           </h1>
           <div
-            class="prose max-w-full prose-indigo sm:prose-lg prose-headings:text-base prose-headings:font-semibold prose-h1:text-xl sm:prose-h1:text-3xl prose-h2:text-lg sm:prose-h2:text-xl"
+            class="prose max-w-full prose-img:mx-auto prose-indigo sm:prose-lg prose-headings:text-base prose-headings:font-semibold prose-h1:text-xl sm:prose-h1:text-3xl prose-h2:text-lg sm:prose-h2:text-xl"
           >
             <Content />
           </div>
