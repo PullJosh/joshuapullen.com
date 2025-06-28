@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [tailwind(), markdoc()],
   redirects: {
     "/blog/posts/[...slug]": {
-      status: 301, // Permanent redirect (as opposed to 302, a temporary redirect)
+      status: 302,
       destination: "/blog/[...slug]",
     },
   },
