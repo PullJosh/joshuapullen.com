@@ -5,7 +5,7 @@ author: Josh Pullen
 description: I just created my first LLC, and it was easier than I expected. Here are 9 things I learned.
 ---
 
-In the last three weeks, I [got engaged](/blog/she-said-yes), [went viral](/blog/oops-im-a-famous-tiktoker-now), attended a week-long conference, found a wedding venue, and yesterday I applied to create an LLC in my name.
+In the last three weeks, I [got engaged](/blog/she-said-yes), [went viral](/blog/oops-im-a-famous-tiktoker-now), attended a week-long conference, booked a wedding venue, and yesterday I applied to create an LLC in my name.
 
 It's been a lot of new experiences.
 
