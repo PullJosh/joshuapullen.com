@@ -40,6 +40,7 @@ const groupBy = <T,>(
       <Nav current="blog" />
       <main class="w-full max-w-2xl lg:max-w-3xl px-8 mx-auto my-16">
         <h1 class="text-2xl font-bold text-gray-900">Josh Pullen's Blog</h1>
+        <InlineEmailSignupForm />
         <div>
           {
             Object.entries(
@@ -86,13 +87,6 @@ const groupBy = <T,>(
                         </>
                       ))}
                     </div>
-
-                    {/* Add email signup form after the first year */}
-                    {index === 0 && (
-                      <div class="mt-8">
-                        <InlineEmailSignupForm />
-                      </div>
-                    )}
                   </>
                 );
               })
