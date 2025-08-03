@@ -8,12 +8,13 @@ import ProjectCard from "../components/ProjectCard.astro";
 
 import headshot from "../images/josh-transparent-bg.png";
 
-import iconScratch from "../images/social-icons/scratch.svg";
-import iconGithub from "../images/social-icons/github.svg";
+import iconTikTok from "../images/social-icons/tiktok.svg";
 import iconYouTube from "../images/social-icons/youtube.svg";
 import iconBlueSky from "../images/social-icons/bluesky.svg";
-import iconDribbble from "../images/social-icons/dribbble.svg";
 import iconLinkedIn from "../images/social-icons/linkedin.svg";
+import iconGithub from "../images/social-icons/github.svg";
+// import iconDribbble from "../images/social-icons/dribbble.svg";
+import iconScratch from "../images/social-icons/scratch.svg";
 
 import logo3Blue1Brown from "../images/projects/logos/3blue1brown.svg";
 import logoClownSchool from "../images/projects/logos/clown-school.png";
@@ -35,14 +36,9 @@ import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 
 const socialLinks = [
   {
-    name: "Scratch",
-    url: "https://scratch.mit.edu/users/PullJosh/",
-    icon: iconScratch,
-  },
-  {
-    name: "Github",
-    url: "https://github.com/PullJosh",
-    icon: iconGithub,
+    name: "TikTok",
+    url: "https://www.tiktok.com/@josh_pullen",
+    icon: iconTikTok,
   },
   {
     name: "YouTube",
@@ -55,14 +51,24 @@ const socialLinks = [
     icon: iconBlueSky,
   },
   {
-    name: "Dribbble",
-    url: "https://dribbble.com/PullJosh",
-    icon: iconDribbble,
-  },
-  {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/joshpullen/",
     icon: iconLinkedIn,
+  },
+  {
+    name: "Github",
+    url: "https://github.com/PullJosh",
+    icon: iconGithub,
+  },
+  // {
+  //   name: "Dribbble",
+  //   url: "https://dribbble.com/PullJosh",
+  //   icon: iconDribbble,
+  // },
+  {
+    name: "Scratch",
+    url: "https://scratch.mit.edu/users/PullJosh/",
+    icon: iconScratch,
   },
 ];
 ---
@@ -159,6 +165,26 @@ const socialLinks = [
           class="mt-8 max-w-6xl px-8 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start"
         >
           <ProjectCard
+            title="Shuffle Buddy"
+            createdAt="Spring 2025"
+            url="https://shufflebuddy.com/"
+            logo={logoShuffleBuddy}
+            coverImage={coverShuffleBuddy}
+          >
+            Shuffle your seating charts–while respecting your students’
+            individual needs.
+          </ProjectCard>
+          <ProjectCard
+            title="Rocket Spelling"
+            createdAt="Spring 2016 (Age 14)"
+            url="https://www.rocketspelling.com/"
+            logo={logoRocketSpelling}
+            coverImage={coverRocketSpelling}
+            loading="eager"
+          >
+            An online spelling game for elementary students
+          </ProjectCard>
+          <ProjectCard
             title="3Blue1Brown.com"
             createdAt="Summer 2021 (Age 19)"
             url="https://www.3blue1brown.com/"
@@ -180,16 +206,6 @@ const socialLinks = [
             Converts Scratch projects to human-readable JavaScript code
             automatically
           </ProjectCard>
-          <ProjectCard
-            title="Rocket Spelling"
-            createdAt="Spring 2016 (Age 14)"
-            url="https://www.rocketspelling.com/"
-            logo={logoRocketSpelling}
-            coverImage={coverRocketSpelling}
-            loading="eager"
-          >
-            An online spelling game for elementary students
-          </ProjectCard>
         </div>
       </div>
       <div>
@@ -210,16 +226,6 @@ const socialLinks = [
           <div
             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start"
           >
-            <ProjectCard
-              title="Shuffle Buddy"
-              createdAt="Spring 2025"
-              url="https://shufflebuddy.com/"
-              logo={logoShuffleBuddy}
-              coverImage={coverShuffleBuddy}
-            >
-              Shuffle your seating charts–while respecting your students’
-              individual needs.
-            </ProjectCard>
             <ProjectCard
               title="Mr. Pullen's Graphing Calculator"
               createdAt="Fall 2022"
