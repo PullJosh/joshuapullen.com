@@ -2,7 +2,7 @@
 date: 2025-08-16 23:00:00
 title: My product went viral when I cracked the TikTok algorithm–despite never being a TikTok user myself.
 author: Josh Pullen
-description: TODO
+description: My product, Shuffle Buddy, has gone viral on TikTok repeatedly, despite the fact that I have never once been a TikTok user. It was way simpler than I expected.
 ---
 
 My product, Shuffle Buddy, has gone [viral on TikTok](https://www.tiktok.com/@josh_pullen) repeatedly, with many videos over 100k views, one video over 1M views, and another video that I believe is on track to do over 1M as well.
