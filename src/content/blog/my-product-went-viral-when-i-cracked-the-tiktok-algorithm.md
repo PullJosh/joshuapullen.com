@@ -17,7 +17,7 @@ Additionally, what worked for me has gone counter to the advice I see from influ
 
 # My formula: Product market fit + retention strategies
 
-Before posting any videos, I already had an excellent product. I [tested it with users](/blog/you-dont-know-your-users-until-you-watch-them), iterated based on their feedback, and I knew that it was well-loved by the people who used it. I just needed to get my product in front of an audience.
+Before posting any videos, I already had an excellent product. I [tested it with users](https://www.joshuapullen.com/blog/you-dont-know-your-users-until-you-watch-them), iterated based on their feedback, and I knew that it was well-loved by the people who used it. I just needed to get my product in front of an audience.
 
 I started out by trying SEO strategies, but I struggled to get the ball rolling.
 
@@ -33,7 +33,7 @@ The product demonstration should happen in one sentence and show clearly visible
 
 Don't be afraid to cut major elements of the feature for the sake of time. For example, my app has many different rule types, but my most viral videos only demonstrate one rule type and let users infer the rest.
 
-## Part 2. Rention
+## Part 2. Retention
 
 I can predict whether a video will go viral or not within the first hour or so. The metric to watch is called "watched full video" and it's the % of people who watched all the way until the end of your video (so that it loops back to the beginning).
 
